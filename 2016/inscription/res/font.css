@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Altus';
+  src: url('Altus.eot');
+  src: url('Altus.eot?#iefix') format('embedded-opentype'),
+       url('Altus.woff2') format('woff2'),
+       url('Altus.woff') format('woff'),
+       url('Altus.ttf') format('truetype'),
+       url('Altus.svg#Altus') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+

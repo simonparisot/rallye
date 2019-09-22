@@ -1,0 +1,12 @@
+<FilesMatch "\.(?i:pdf)$">
+  ForceType application/octet-stream
+  Header set Content-Disposition attachment
+</FilesMatch>
+<FilesMatch "\.(?i:jpg)$">
+  ForceType application/octet-stream
+  Header set Content-Disposition attachment
+</FilesMatch>
+<FilesMatch "\.(?i:mp3)$">
+  ForceType application/octet-stream
+  Header set Content-Disposition attachment
+</FilesMatch>

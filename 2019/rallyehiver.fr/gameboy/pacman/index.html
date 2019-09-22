@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en" manifest="cache.manifest">
+<head>
+	<meta charset="utf-8" />
+	<title>Pacman</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="pacman-canvas.css?v1.0.1">
+	<link rel="manifest" href="manifest.json">
+
+	<!-- site icons -->
+	<link rel="shortcut icon" href="img/Icon-130x130.png" />
+	<link rel="apple-touch-icon" href="img/Icon-130x130.png" />
+	
+	<!-- Mobile Viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+	
+	<!-- Apple Mobile Web Capability -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	
+	<!-- Script -->
+	<script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
+	<script src="js/jquery.hammer.min.js" type="text/javascript"></script>
+	
+</head>
+
+<body>
+
+<!-- Display this message if Javascript is disabled -->
+<noscript>
+<p>Aie, cette énigme ne s'affiche pas dans votre navigateur...</p>
+</noscript>
+
+<!-- main game content -->
+<div class="game wrapper">
+
+	<div class="s-menu score">Score:</div>
+	<div class="s-menu level">Niveau:</div>
+	<div class="s-menu lives">Vie: </div>
+	
+	<!-- canvas is splitted into 18x13 fields -->
+	<div id="canvas-container">
+		<div id="canvas-overlay-container">
+			<div id="canvas-overlay-content">
+				<div id="title">Pacman</div>
+				<div><p id="text">Cliquez pour jouer</p></div>
+			</div>
+		</div>
+		<canvas id="myCanvas" width="540" height="390">
+		<p>Aie, cette énigme ne s'affiche pas dans votre navigateur...</p>
+		</canvas>
+	</div>
+	
+</div>
+	
+	<span id="audio">
+		<audio id="theme" preload="auto">
+			<source src="mp3/theme.mp3" type="audio/mpeg">
+		</audio>
+		<audio id="waka" preload="auto">
+			<source src="wav/waka.wav" type="audio/wav">
+			<source src="mp3/waka.mp3" type="audio/mpeg">
+		</audio>
+		<audio id="die" preload="auto">
+			<source src="wav/die.wav" type="audio/wav">
+			<source src="mp3/die.mp3" type="audio/mpeg">
+		</audio>
+		<audio id="powerpill" preload="auto">
+			<source src="wav/powerpill.wav" type="audio/wav">
+			<source src="mp3/powerpill.mp3" type="audio/mpeg">
+		</audio>
+	</span>
+	
+	
+</div>
+
+<script src="pacman-canvas.js" type="text/javascript"></script>
+
+
+</body>
+</html>

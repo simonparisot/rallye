@@ -1,0 +1,64 @@
+<head>
+	<title> Gameboy </title>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="Gameboy css only"/>
+	<link rel="stylesheet" href="main.css"/>
+
+</head>
+<body>
+	<div class="gameboy">
+		<div class="screen-cont">
+			<div class="power"></div>
+			<div class="screen">
+				<div class="header"> SON STEREO DE BONNE QUALITE </div>
+				<div class="screen-content">
+                    <div class="gamelink" rel="mario">Super Mario Bros</div>
+                    <div class="gamelink" rel="pacman">Pacman</div>
+                    <div class="gamelink" rel="frogger">Frogger</div>
+                    <div class="gamelink" rel="spaceinvader">Space Invaders</div>
+                    <div class="gamelink" rel="tetris">Tetris</div>
+                </div>
+			</div>
+		</div>
+		<div class="controls-cont">
+			<div class="btn-direction">
+				<div class="vertical"></div>
+				<div class="horizontal"></div>
+			</div>
+			<div class="btn-AB"></div>
+			<div class="btn-start-select"></div>
+		</div>
+		<div class="speakers"></div>
+	</div>
+
+	<div id="modal">
+		<section id="gameplace">
+			
+		</section>
+	</div>
+
+	<script type="text/javascript">
+		var gamelinks = document.getElementsByClassName("gamelink");
+		var gameplace = document.getElementById("gameplace");
+		for (var i = 0; i < gamelinks.length; i++) {
+			gamelinks[i].addEventListener("click", function() {
+				var game = this.getAttribute("rel");
+				var iframe = '<iframe src="' + game + '/index.html" scrolling="no" frameBorder="no" onload="this.contentWindow.focus()""></iframe>';
+				if (game == "mario") 			 { gameplace.style.width = "640px"; gameplace.style.height = "480px"; }
+				else if (game == "pacman")  	 { gameplace.style.width = "640px"; gameplace.style.height = "440px"; }
+				else if (game == "frogger") 	 { gameplace.style.width = "480px"; gameplace.style.height = "640px"; }
+				else if (game == "spaceinvader") { gameplace.style.width = "900px"; gameplace.style.height = "600px"; }
+				else if (game == "tetris") 		 { gameplace.style.width = "480px"; gameplace.style.height = "640px"; }
+				document.getElementById("gameplace").innerHTML = iframe;
+				document.getElementById("modal").style.display = "block";
+				//setTimeout(function() { document.getelementsbytagname('iframe')[0].contentWindow.focus() }, 100);
+			});
+		};
+		document.getElementById("modal").addEventListener("click", function() {
+			document.getElementById("gameplace").innerHTML = "";
+			document.getElementById("modal").style.display = "none";
+		});
+	</script>
+
+</body>

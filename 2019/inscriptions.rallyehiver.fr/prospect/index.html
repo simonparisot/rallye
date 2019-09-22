@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Rallye d'Hiver 2019 - Paris</title>
+	<link rel="stylesheet" type="text/css" href="style.css?v=1.3.0">
+	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+</head>
+<body>
+
+	<header>
+	<h1>Et vous,<br>
+	que faites-vous cet hiver ?</h1>
+	<h2>Rallye d'Hiver 2019</h2>
+	</header>
+
+	<footer>
+		<p id="countdown">Départ dans <span id="cd">13 jours, 14 heures et 34 minutes</span></p>
+		<form action="" id="form">
+			<input type="mail" name="mail" id="mail" placeholder="E-mail" required>
+			<input type="submit" value="Je veux être informé !" id="button" onclick="storeEmail();return false;">
+		</form>
+		<div id="form-error"></div>
+		<p id="thanks"></p>
+	</footer>
+
+	<script>
+		
+		function updatecountdown() {
+			// Get todays date and time
+			var now = new Date().getTime();
+
+			// Find the distance between now and the count down date
+			var distance = countDownDate - now;
+
+			// Time calculations for days, hours, minutes and seconds
+			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+			// Display the result in the element with id="demo"
+			var txt   = 'Départ dans <span id="cd">';
+			txt 	 += days + " jour" + (days>1 ? "s":"");
+			txt 	 += ", " + hours + " heure" + (hours>1 ? "s":"");
+			txt 	 += " et " + minutes + " minute" + (minutes>1 ? "s":"");
+			txt 	 += "</span>";
+
+			document.getElementById("countdown").innerHTML = txt;
+
+			// If the count down is finished, write some text 
+			if (distance < 0) {
+				clearInterval(x);
+				document.getElementByTagName("footer").innerHTML = "<p>Le rallye a commencé ! Vérifiez vos mails :)</p>";
+			}
+		}
+
+		var countDownDate = new Date("Dec 21, 2018 23:22:00").getTime();
+		updatecountdown();
+		var x = setInterval(function() {updatecountdown();}, 60000);
+	</script>
+
+	<script>
+		function validateForm() {
+		    var x = document.forms["myForm"]["fname"].value;
+		    if (x == "") {
+		        alert("Name must be filled out");
+		        return false;
+		    }
+		}		
+	</script>
+
+	<script>
+		
+		var httpRequest = new XMLHttpRequest();
+
+		httpRequest.onreadystatechange = function() {
+		    if (httpRequest.readyState == XMLHttpRequest.DONE) {
+	            if (httpRequest.status == 201) {
+	                console.log("sent: " + httpRequest.responseText);
+	                document.getElementById("form-error").innerHTML = "";
+	                document.getElementById("form").innerHTML = "";
+	                document.getElementById("thanks").innerHTML = "C'est bien noté ! Nous vous tenons au courant dès qu'il y a du nouveau, promis :)";
+	            } else {
+	                console.log('Un problème est survenu avec la requête :/');
+	                document.getElementById("form-error").innerHTML = "Désolé, il y a eu un problème :(";
+	            }
+	        }
+		};
+		
+		function storeEmail() {
+			var email = document.getElementById("mail").value;
+
+			if (validateEmail(email)) {
+				httpRequest.open('POST', 'https://g1t0ssi5cb.execute-api.eu-west-3.amazonaws.com/prod/prospects', true);
+				httpRequest.setRequestHeader('Content-Type', 'application/json');
+				httpRequest.send('{"email":"' + email + '"}');
+			}else{
+				document.getElementById("form-error").innerHTML = "Ce n'est pas une adresse email valide :(";
+			}
+		}
+
+		function validateEmail(txt) {
+		    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		    return re.test(String(txt).toLowerCase());
+		}
+	</script>
+
+</body>
+</html>

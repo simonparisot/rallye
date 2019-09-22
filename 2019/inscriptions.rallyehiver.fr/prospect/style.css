@@ -1,0 +1,91 @@
+html { font-size: 62.5%; }
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #000;
+	background-image: url("mahkeo-600877-unsplash.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+
+    font-family: 'Abril Fatface', cursive, sans-serif;
+	text-shadow: 1px 1px 7px #000;
+    font-size: 1rem;
+}
+
+header, footer {
+	width: 70%;
+	max-width: 700px;
+	margin: 10vh auto 15vh auto;
+	text-align: left;
+}
+
+h1, h2 { 
+	font-size: 5.2rem; 
+	font-weight: normal;
+	font-style: normal;
+	margin: 0; }
+header h1 { color: #ffffff; }
+header h2 { color: #fff000; }
+
+@media (orientation: portrait) {
+	header, footer { width: 90%; max-width: none; }
+	h1, h2 { font-size: 6.6rem; }
+}
+
+p {
+	font-size: 2.6rem;
+	color: #fff;
+}
+
+/* ------ FOOTER STYLE ---------- */
+
+input {
+	margin: 0;
+	padding: 0 10px;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 1px 1px 7px #333;
+	height: 4rem;
+	vertical-align: top;
+	-webkit-appearance: none;
+	-webkit-border-radius:0; 
+    border-radius:0;
+}
+
+#mail { 
+	width: 55%;
+	font-size: 1.4rem;
+}
+
+#button { 
+	width: 35%;
+	font-size: 1.8rem;
+	font-family: "Abril Fatface", cursive, sans-serif;
+	transition: background-color 400ms;
+	background-color: #fff000;
+}
+
+@media (orientation: portrait) {
+	footer { margin-top: 40vh;  }
+	p { font-size: 5.5rem; }
+	input { height: 8rem; margin: 20px 0; text-align: center; padding: 0; }
+	#mail { font-size: 4rem; width: 100%; }
+	#button { font-size: 4rem; width: 100%; }
+	#cd { display: block; }
+}
+
+#form-error {
+	font-size: 1.4rem;
+	font-family: sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	color: #fff000;
+	margin-top: 7px;
+}
+
+#thanks { 
+	color: #fff000;
+}

@@ -1,0 +1,306 @@
+﻿@font-face { font-family: self-calibri; src: url('calibri.ttf'); }
+@font-face { font-family: self-calibri; font-weight: bold; src: url('calibrib.ttf'); }
+
+body{
+	background-color: #000;
+	font-family: calibri, self-calibri, times, Helvetica, sans-serif;
+	font-size:16px;
+}
+
+#page{
+	position:relative;
+	margin:0 auto 0 auto;
+	width:750px;
+}
+
+#page_bof{
+	margin:0 auto 0 auto;
+	width:877px;
+}
+
+#content_bof{
+	z-index:1;
+	position:relative;
+	top:-40px;
+}
+
+#logo{
+	margin:0 auto 0 auto;
+	width:272px;
+	height: 66px;
+	background-image: url("pictures/logo.jpg");
+	background-repeat: no-repeat;
+}
+
+a{
+	color: #fff;
+	outline:none;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #dadada;
+	outline:none;
+	text-decoration: none;
+}
+
+a img{
+	border:0;
+}
+
+#iewarning{
+	background-color: #ff0000;
+	text-align:center;
+	z-index:200;
+}
+
+/*--------------------------------------------------------------
+				CSS pour le menu
+---------------------------------------------------------------*/
+
+#menu{
+	margin-top:30px;
+}
+
+.bouton{
+	opacity:0.6; 
+	filter:alpha(opacity=60); 
+	-moz-opacity:0.6;
+}
+
+.bouton.lien_selected{
+	filter:alpha(opacity=100); 
+	opacity:1; 
+	-moz-opacity:1;
+}
+
+.bouton:hover{
+	filter:alpha(opacity=100); 
+	opacity:1; 
+	-moz-opacity:1;
+}
+
+#bouton_1{
+	margin-left:4px;
+	width:16px;
+	height:17px;
+}
+
+#bouton_2{
+	margin-left:26px;
+	width:92px;
+	height:15px;
+}
+
+#bouton_3{
+	margin-left:26px;
+	width:88px;
+	height:15px;
+}
+
+#bouton_4{
+	margin-left:26px;
+	width:91px;
+	height:15px;
+}
+
+#bouton_5{
+	margin-left:26px;
+	width:72px;
+	height:15px;	
+}
+
+#bouton_6{
+	margin-left:26px;
+	width:125px;
+	height:15px;
+}
+
+#bouton_7{
+	margin-left:26px;
+	width:75px;
+	height:15px;
+}
+/*----------------------------------------*/
+
+#news{
+	padding-top:3px;
+	height: 25px;
+	text-align: center;
+	background-image: url("pictures/news.jpg");
+	background-repeat: no-repeat;
+}
+
+#content{
+	margin-top:5px;
+	padding-top:20px;
+	padding-left:20px;
+	height: 542px;
+	background-image: url("pictures/background2.jpg");
+	background-repeat: no-repeat;
+}
+
+#connexion, #calendrier, #reglement, #questionnaires, #contacts{
+	position:relative;
+	padding:30px;
+	display:none;
+	width:580px;
+	height: auto;
+	color:#fff;
+	background-color:#000;
+	border-radius: 20px 20px 20px 0;
+}
+
+#perso{
+	position:relative;
+	padding:30px;
+	display:none;
+	width:620px;
+	height: auto;
+	color:#fff;
+	background-color:#000;
+	border-radius: 20px 20px 20px 0;
+}
+
+#accueil{
+	padding:30px;
+	display:none;
+	width:650px;
+	height:auto;
+	color:#fff;
+	background-color:#000;
+	border-radius: 20px 20px 20px 0;
+}
+
+#enigmes{
+	padding:30px;
+	display:none;
+	width:650px;
+	height: 455px;
+	color:#fff;
+	background-color:#000;
+	border-radius: 20px 20px 20px 0;
+}
+
+.inside-text{
+	margin-top:30px;
+	text-align:justify;
+}
+
+input{
+border: 0;
+outline:none;
+}
+
+.bulle{
+	display:none;
+	position:absolute;
+	padding:10px;
+	width:210px;
+	height:67px;
+	background-color:black;
+	opacity:0.8;
+}
+
+#change_pwd{
+	display:none;
+	margin-top:10px;
+	margin-left:3px;
+}
+
+#indice{
+	padding:5px 10px 5px 20px;
+	background-color:#1b1b1b;
+}
+
+#bof{
+	padding-left:93px;
+	padding-right:94px;
+	height: auto;
+	color:#fff;
+	background-image: url("pictures/bof_middle.jpg");
+	background-repeat: repeat-y;
+}
+
+#bof_header{
+	width: 877px;
+	height: 70px;
+	background-image: url("pictures/bof_header.jpg");
+	background-repeat: no-repeat;
+}
+
+#bof_footer{
+	width: 877px;
+	height: 70px;
+	background-image: url("pictures/bof_footer.jpg");
+	background-repeat: no-repeat;
+}
+
+.options_accueil{
+	width: 500px;
+	background-color:#1b1b1b;
+}
+
+.zone{
+	position: absolute;
+	z-index: 100;
+	background-color:black;
+	opacity:0; 
+	filter:alpha(opacity=0); 
+	-moz-opacity:0;
+}
+
+.case{
+	width:220px;
+	height:60px;
+	vertical-align:top;
+}
+
+.case_diese{
+	padding-top:5px;
+	padding-right:5px;
+	vertical-align:top;
+}
+
+#legende{
+	position:absolute;
+	top:186px;
+	left:528px;
+	opacity:0.7; 
+	filter:alpha(opacity=70); 
+	-moz-opacity:0.7;
+}
+
+#board{
+	height:200px;
+	width:400px;
+	background-color:black;
+	color:white;
+}
+
+.bonus{
+	margin:5px auto 0px auto;
+	width:340px;
+	height:23px;
+	border:1px solid #7dabeb;
+	overflow:hidden;
+}
+
+.bonusInfo{
+	position:relative;
+	height:75px;
+	width:300px;
+}
+
+#dinerSolved{
+	padding:15px;
+	background: rgba(125, 171, 235, 0.15);
+	border-radius: 10px 10px 10px 0;
+}
+
+#dossierOK{
+	text-align:center;
+	padding:10px 15px;
+	background: rgba(0, 255, 50, 0.15);
+	border-radius: 10px 10px 10px 0;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8" />
+  <title>Blockrain.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+  <link href='http://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="src/blockrain.css">
+
+</head>
+<body>
+
+    <div class="example">
+      <div class="game" id="tetris-demo"></div>
+    </div>
+
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+<script src="src/blockrain.jquery.libs.js"></script>
+<script src="src/blockrain.jquery.src.js"></script>
+<script src="src/blockrain.jquery.themes.js"></script>
+
+<script>
+  var audio = new Audio('assets/music/theme.mp3');
+  audio.loop = true;
+  var $demo = $('#tetris-demo').blockrain({
+    speed: 20,
+    theme: 'candy',
+    onStart: function() {
+      audio.play();
+    },
+  });
+
+</script>
+
+</body>
+</html>

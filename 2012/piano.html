@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Rallye d'hiver 2012 | Piano</title>
+	<script type="text/javascript" src="js/toolbox.js"></script>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-27051659-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+	<style type="text/css">
+		.blanche{
+			position:absolute;
+			border: 1px solid black;
+			width:60px;
+			height:200px;
+		}
+		
+		.blanche:hover{
+			background-color:#eeeeee;
+		}
+		
+		.blanche:active{
+			background-color:#ff0000;
+		}
+
+		.noire{
+			position:absolute;
+			background-color:black;
+			width:34px;
+			height:130px;
+		}
+		
+		.noire:active{
+			background-color:#ff0000;
+		}
+	</style>
+	<script type="text/javascript">
+		var piano = '';
+		var blabla = 0;
+		function blop(note){
+			piano+=note;
+			blabla = acceder('piano.php?piano='+piano);
+			if(blabla != 0){
+				document.getElementById('piano_text').innerHTML = "Bravo ! Le mot de passe est <i>"+blabla+"</i>.";
+			}
+		}
+	</script>
+</head>
+<body style="text-align:center;">
+<div id="piano_text" style="position:relative;margin-top:150px;font-size:40px;"><b>FACILE &Agrave; JOUEZ</b></div>
+<div id="piano" style="position:relative;width:444px;margin:50px auto 0px auto;">
+	<a href="#" onClick="blop('do');"><div class="blanche" style="left:0px;"></div></a>
+	<a href="#" onClick="blop('re');"><div class="blanche" style="left:64px;"></div></a>
+	<a href="#" onClick="blop('mi');"><div class="blanche" style="left:128px;"></div></a>
+	<a href="#" onClick="blop('fa');"><div class="blanche" style="left:192px;"></div></a>
+	<a href="#" onClick="blop('sol');"><div class="blanche" style="left:256px;"></div></a>
+	<a href="#" onClick="blop('la');"><div class="blanche" style="left:320px;"></div></a>
+	<a href="#" onClick="blop('si');"><div class="blanche" style="left:384px;"></div></a>
+	
+	<a href="#" onClick="blop('dod');"><div class="noire" style="left:45px;"></div></a>
+	<a href="#" onClick="blop('red');"><div class="noire" style="left:109px;"></div></a>
+	<a href="#" onClick="blop('fad');"><div class="noire" style="left:237px;"></div></a>
+	<a href="#" onClick="blop('sold');"><div class="noire" style="left:301px;"></div></a>
+	<a href="#" onClick="blop('lad');"><div class="noire" style="left:365px;"></div></a>
+</div>
+
+</table>
+
+</body>
+</html>
