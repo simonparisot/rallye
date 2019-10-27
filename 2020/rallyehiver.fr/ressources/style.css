@@ -118,12 +118,12 @@ body { background: #000 url("img/waldo.jpg") no-repeat fixed center/cover; paddi
 }
 .expanded .col-droite { display: block; overflow: hidden; }
 
-.enigme-header, .quest-header { background-color: #eee; padding: 10px 15px 10px 0; border-radius: 6px 6px 0 0; border-bottom: 1px solid #999; }
+.content-header { background-color: #eee; padding: 10px 15px 10px 0; border-radius: 6px 6px 0 0; border-bottom: 1px solid #999; }
+.content-header form { display: inline; overflow: auto; }
+.content-header input { margin-left: 15px; }
+.content-header input[type='text'] { width: 35%; max-width: 220px; position: absolute; z-index: 2; right: 117px; }
+.content-header input[type='submit'] { position: absolute; right: 10px; top: 9px; }
 .headerbutton { margin-left: 15px; margin-top: 3px; }
-.enigme-header form { display: inline; overflow: auto; }
-.enigme-header input { margin-left: 15px; }
-.enigme-header input[type='text'] { width: 35%; max-width: 220px; position: absolute; z-index: 2; right: 117px; }
-.enigme-header input[type='submit'] { position: absolute; right: 10px; top: 9px; }
 
 .enigme-response { display: none; background-color: #e85938; padding: 8px 15px; }
 
@@ -286,10 +286,10 @@ body { background: #000 url("img/waldo.jpg") no-repeat fixed center/cover; paddi
 	/*.col-gauche li.deactivated { display: none; }*/
 
 	.enigme-button:hover span { display: none; }
-	.enigme-header input { margin-bottom: 12px; }
-	.enigme-header input[type='text'] 	{ width: 50%; max-width: unset; position: relative; right: unset; top: unset; }
-	.enigme-header input[type='submit'] { width: 30%; max-width: unset; position: relative; right: unset; top: unset; }
-	.enigme-header input[type='submit']:after { content:"\a"; white-space: pre; }
+	.content-header input { margin-bottom: 12px; }
+	.content-header input[type='text'] 	{ width: 50%; max-width: unset; position: relative; right: unset; top: unset; }
+	.content-header input[type='submit'] { width: 30%; max-width: unset; position: relative; right: unset; top: unset; }
+	.content-header input[type='submit']:after { content:"\a"; white-space: pre; }
 	
 
 	.enigme-discussion.slided { width: 100%; }

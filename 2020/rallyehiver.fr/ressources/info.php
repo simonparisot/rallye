@@ -32,7 +32,6 @@ $enigmeList = array (
     array("De Fil en Aiguille",                    true,                              "rami"            ),
     array("Une bonne occasion",                    false,                             "jackpot"         ),
     array("Petites Annonces",                      false,                             "marseille"       ), 
-    // pas encore de mot de passe pour Concept
     array("La théorie des jeux",                   false,                             "xxx"             ),       
     array("Enigme Mystère",                        false,                             "lemaillonfaible" ),            
 );

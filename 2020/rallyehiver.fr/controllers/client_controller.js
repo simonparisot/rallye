@@ -1,19 +1,26 @@
-//
-// Bienvenue sur le controleur javascript du site du Rallye
-// Il sera difficile de trouver des réponses aux énigmes ici, mais sait-on jamais !
-// Vous remarquerez que j'ai bien commenté pour vous faciliter la tâche
-// ... au fait, vous vous étiez bien déconnectés avant de regarder ça non ? Sinon je connais votre équipe maintenant, et vous pouvez être sûr que ça ressortira au diner ;)
-//
-
 $(document).ready(function() {
 	
+    // Gestion des animations et de la navigation sur le site
     $('body').on('click touchend', '.reduced', function(e){ expand(this) });
     $('.col-gauche', '.white').on('click', 'li:not(.deactivated)', function(e){ chargerEnigme(this) });
     $('.col-gauche', '.grey' ).on('click', 'li:not(.deactivated)', function(e){ chargerQuest(this) });
     $('textarea').autogrow();
-    $('.enigme-header form').on('submit', function(e) { e.preventDefault(); tester(); });
+    $('.mail-orga').on('click', function() { $(this).html('<i class="fas fa-envelope"></i> theb2.rallye@gmail.com').css('background-color', '#eee').css('font-weight', 'bold'); })
+    $('#popin').on('click', function() { $('#popin').toggle(); })
+    $('.downloadButton').on('click', function() { window.location = 'controllers/download.php?enigme=' + active(); })
+    $('.downloadParcours').on('click', function() { window.location = 'controllers/download.php?code=' + questcode(); })
+    $('.clueButton').on('click', function() {     
+        $('#popin section').load('views/indice.php', function(){ $('#popin').toggle() });
+    })
+
+    // Gestion des formulaires
+    $('.content-header form').on('submit', function(e) { e.preventDefault(); tester(); });
     $('.commentaires form').on('submit', function(e) { e.preventDefault(); donnerAvis(); });
     $('.enigme-discussion form').on('submit', function(e) { e.preventDefault(); poster(); });
+    
+    // Gestion du panel de discussion
+    $('.discussButton').on('click', function() { discussion(); })
+    //refreshIntervalId = setInterval(updateDiscussion(), 1000);
     $('.enigme-discussion').on('click', '.postdelete', function () {
         var nom = $(this).attr('nom');
         $.post("controllers/discussion.php?delete", { 
@@ -22,19 +29,6 @@ $(document).ready(function() {
             enigme: active()
         }, function() { updateDiscussion () });
     });
-    $('#popin').on('click', function() { $('#popin').toggle(); })
-    $('.downloadButton').on('click', function() { window.location = 'controllers/download.php?enigme=' + active(); })
-    $('.downloadParcours').on('click', function() { window.location = 'controllers/download.php?code=' + questcode(); })
-    $('.discussButton').on('click', function() { discussion(); })
-    $('.clueButton').on('click', function() {     
-        $('#popin section').load('views/indice.php', function(){ $('#popin').toggle() });
-    })
-    
-    $('.mail-orga').on('click', function() { $(this).html('<i class="fas fa-envelope"></i> theb2.rallye@gmail.com').css('background-color', '#eee').css('font-weight', 'bold'); })
-    //setInterval( () => {if (active()==6) updateDiscussion(); } , 1000);
-    refreshIntervalId = setInterval(function(){ 
-        if (active()==20) updateDiscussion();
-    }, 1000);
 
     // hack pour la gestion des placeholder sous IE9
     if ( document.createElement('input').placeholder == undefined ) {
@@ -47,41 +41,21 @@ $(document).ready(function() {
             });
     }
 
-    /* THE END
-    $('.theend').on('click', function() { $('.theend').hide(); noend = true });
+    /*
+    //  Routine pour afficher un message à la fin du rallye !
+    function verifyTheEnd () {
+        var now = new Date().getTime();
+        var end = new Date("Mar 20, 2019 22:58:00").getTime();
+        if (now > end && !noend) $('.theend').show();
+    }
     noend = false;
+    $('.theend').on('click', function() { $('.theend').hide(); noend = true });
     var x = setInterval(function() {verifyTheEnd();}, 1000);
     */
-    
-    // whuf
-    //...- .- ..- -... .- -. ..-. .- -.-- --- .-.. .-.. . -- . .-. -.-. .-. . -.. .. ..--- ----- ....
-    //0001/01/001/1000/01/10/0010/01/1011/111/0100/0100/0/11/0/010/1010/010/0/100/00/00111/11111/0000
-    wnik = [0,0,0,1,"/",0,1,1,"/",1,1,0,0,"//",1,0,"//",0,0,1,0,"/",0,1,"/",1,0,0,1,"/",1,1,1,"/",0,1,0,0,"/",0,1,0,0,"/",0,"//",0,1,"/",0,1,"/",1,0,0,1,"/",1,1,0,"/",0,1,0,"/",1,0,1,1,0,"/",0,"/",1,0,0,"/",0,0,"//",0,0,0,1,"/",1,1,1,"/",1];
-    wiknk = [1,0,0,1,"/",0,1,"/",0,0,1,"/",1,1,0,0,"/",1,1,"/",1,0,"//",1,0,1,0,"/",0,1,"//",1,1,"/",0,"/",0,1,0,"/",1,1,"/",0,1,1,"/",1,"/",1,0,1,"/",0,0,"//",0,0,0,1,1,"/",1,1,1,1,1,"/",0,0,1,1];
-    iwnk = [1,0,1,"/",0,1,0,0,1,"/",1,1,0,0,"/",1,1,"/",1,0,"//",1,0,"/",0,1,"//",1,1,"/",0,"/",0,1,0,"/",0,0,"/",0,1,1,"/",1,"/",1,0,0,"/",0,0,"//",0,1,1,1,1,1,"/",0,0,1,1];
-    iwhu = [0,0,0,1,"/",0,1,"/",0,1,0,0,1,"/",1,1,0,0,"/",1,1,"/",1,0,"//",0,1,"/",0,1,"//",1,1,1,1,"/",0,0,"/",0,1,1,"/",1,"/",1,0,0,"/",0,0,"//",0,1,1,1,1,1,"/",0,0,1,1,1,1,"/",1,"/"];
-    whuf = [0,0,0,1,"/",0,1,"/",0,0,1,"/",1,0,0,0,"/",0,1,"/",1,0,"//",0,0,1,0,"/",0,1,"/",1,0,1,1,"/",1,1,1,"/",0,1,0,0,"/",0,1,0,0,"/",0,"//",1,1,"/",0,"/",0,1,0,"/",1,0,1,0,"/",0,1,0,"/",0,"/",1,0,0,"/",0,0,"//",0,0,1,1,1,"/",1,1,1,1,1,"/",0,0,0,0];
-    kinh = [0,0,0,1,"/",0,1,"/",0,0,1,"/",1,0,0,0,"//",0,0,1,0,"/",0,1,"/",1,1,1,1,"/",1,1,1,"/",0,1,0,0,"/",0,1,0,0,"/",0,"//",1,1,"/",0,"/",0,1,"/",0,1,"//",1,1,1,1,"/",0,0,"/",0,1,1,"/",1,"/",1,0,0,"/",0,0,"//",0,1,1,1,1,1,"/",0,0,1,1,1,1,"/",1,"/"];
-    c = 0;
-    setTimeout(winkgo, 8000);
-
-    // Konami
-    if ( window.addEventListener ) { 
-        var k = 0, koko = [38,38,40,40,37,39,37,39,66,65]; 
-        window.addEventListener("keydown", function(e) { 
-            if ( e.keyCode == koko[k] ) k++; 
-            else k = 0; 
-            if ( k == 10 ) window.location = "/gameboy"; 
-        }, true); 
-    }
 
 });
 
-function verifyTheEnd () {
-    var now = new Date().getTime();
-    var end = new Date("Mar 20, 2019 22:58:00").getTime();
-    if (now > end && !noend) $('.theend').show();
-}
+
 
 // ------------------------------------------
 // Ouvrir un onglet
@@ -192,40 +166,7 @@ function donnerAvis () {
 }
 
 // ------------------------------------------
-// winkwink
-function winkgo () {
-    
-    if (c < whuf.length) {
-        if (whuf[c] == "/") {
-            setTimeout(function() {
-                c++; 
-                winkgo();
-            }, 1000);
-        }else if(whuf[c] == "//") {
-            setTimeout(function() {
-                c++; 
-                winkgo();
-            }, 2000);
-        }else{
-            $('#logo').attr('src', 'ressources/img/logowink3.png');
-            setTimeout(function() {
-                $('#logo').attr('src', 'ressources/img/logo.png');
-                setTimeout(function() {
-                    c++; 
-                    winkgo();
-                }, 500-whuf[c]*200);
-            }, 200+whuf[c]*600);
-        }
-    }else{
-        setTimeout(function() {
-            c=0; 
-            winkgo();
-        }, 4000);
-    }
-}
-
-// ------------------------------------------
-// Mettre à jour les stats del'équipe
+// Mettre à jour les stats de l'équipe
 function majStats () {
     $('.stats-img').html('');
     var nbEni = $('span', '.statEni').text();
@@ -301,7 +242,7 @@ function questcode () { return $('li:nth-child('+active()+')', '#quest-list').at
 
 
 // ------------------------------------------
-// Auto-growing textareas; technique ripped from Facebook
+// Auto-growing textareas; ripped from Facebook
 // http://github.com/jaz303/jquery-grab-bag/tree/master/javascripts/jquery.autogrow-textarea.js
 (function($) {
 

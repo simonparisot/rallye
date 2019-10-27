@@ -1,9 +1,9 @@
-<div class="enigme-header">
+<div class="content-header">
 	
 	<form autocomplete="off">
 
 		<input type="text" name="reponse" placeholder="Votre réponse ..." id="e_password" class="textbox font2" autocapitalize="off" autocomplete="off" autocorrect="off">
-		<input type="submit" value="Proposer" class="btn font2">
+		<input type="submit" value="Soumettre" class="btn font2">
 
 		<div class="enigme-button downloadButton">
 			<i class="fas fa-file-download"></i><span>Télécharger cette énigme</span>
