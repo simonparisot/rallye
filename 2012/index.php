@@ -43,7 +43,7 @@ elseif(isset($_POST["login"]))
 	else
 	{
 		
-		$link = mysql_connect("127.0.0.1:3306", "root", "bHfhV169sXUz");
+		$link = mysql_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp");
 		$db = mysql_select_db('rallyehiver2012', $link);
 		
 		// Récupération des infos de la BDD

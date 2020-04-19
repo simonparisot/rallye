@@ -1,0 +1,333 @@
+@import-normalize;
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto:wght@300;400&display=swap");
+
+
+html { font-size: 62.5%; }
+
+body {
+	margin: 0;
+	padding: 0;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+		#000 url("./res/tristan-colangelo-d4OnMIl5OYk-unsplash.jpg") center/cover no-repeat fixed;
+  font-family: 'Abril Fatface', cursive, sans-serif;
+	text-shadow: 1px 1px 7px #000;
+  font-size: 1rem;
+	width: 70%;
+	max-width: 700px;
+	margin: 10vh auto 60px auto;
+	text-align: left;
+}
+
+section {
+  margin-top: 3rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 2rem;
+  color: #fff;
+  line-height: 1.3;
+}
+
+nav { margin-top: 3rem; }
+
+h1, h2 { 
+  font-size: 5.2rem; 
+  font-weight: normal;
+  font-style: normal;
+  margin: 10px 0;
+}
+
+h1 { color: #ffffff; }
+h2 { color: #fff000; }
+
+a { 
+  text-decoration: none;
+  color: #fff;
+}
+
+button { 
+  border: none;
+  padding: 8px 15px;
+  margin-right: 20px;
+  min-width: 180px;
+  font-size: 1.8rem;
+  font-family: "Abril Fatface", cursive, sans-serif;
+  background-color: #fff000;
+  cursor: pointer;
+}
+button:hover { box-shadow: 0 0 5px #fff000; }
+button svg { margin-right: 10px; }
+
+.year-edition {
+  min-width: 275px;
+  display: inline-block;
+  margin: 20px 20px 0 0;
+  padding: 10px 20px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 10px #000;
+  background-color: #eee;
+  color: #000;
+  font-weight: 400;
+  text-shadow: none;
+}
+div.year-edition {
+  opacity: 0.6;
+}
+a.year-edition:hover { box-shadow: 0 0 5px #ccc; }
+
+.year-edition > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.year-edition img {
+  width: 100px;
+  border-radius: 100px;
+  margin-right: 20px;
+  border: 1px solid #000;
+}
+
+
+
+
+
+
+form { margin-top: 50px; }
+
+.message {
+    font-family: "Harmattan", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2rem;
+    color: #fff000;
+    margin: 0;
+    margin-top: 50px;
+    text-shadow: none;
+    background: rgba(255,255,255,0.3);
+    padding: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    line-height: 1.4;
+}
+
+.message span { font-weight: bold; font-size: 3rem; }
+
+/* ----------- ----------- ----------- */
+/*             FOOTER STYLE            */
+/* ----------- ----------- ----------- */
+
+input {
+	margin: 0 5px 5px 0;
+	padding: 0 10px;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 1px 1px 7px #333;
+	height: 4rem;
+	vertical-align: top;
+	-webkit-appearance: none;
+	-webkit-border-radius:0; 
+    border-radius:0;
+}
+
+.guys > * {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.guys > input { 
+	width: 41%;
+	font-size: 1.4rem;
+}
+
+input#team-name {
+	width: 60%;
+	font-size: 1.4rem;	
+}
+
+#payCB-2 { width: 30%; }
+
+#addCo {
+	display: inline-block;
+    cursor: pointer;
+}
+
+#addCo img { height: 3.5rem; }
+
+#form-error {
+	font-size: 1.4rem;
+	font-family: sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	color: #000;
+	background-color: red;
+	margin-top: 7px;
+	padding: 0 10px;
+	width: fit-content;
+	text-shadow: none;
+}
+
+#processing { text-align: center; margin-top: 35vh; }
+
+
+/* ----------- ----------- ----------- */
+/*             MOBILE STYLE            */
+/* ----------- ----------- ----------- */
+
+
+@media (orientation: portrait) {
+  section { width: 90%; max-width: none; }
+  h1, h2 { font-size: 6.6rem; }
+  .content-text {
+    font-size: 4rem;
+    margin-bottom: 40px;
+  }
+  input {
+    height: inherit;
+    margin: 20px 0;
+    text-align: center;
+    padding: 20px 0;
+    display: inline-block;
+    width: 100% !important;
+    font-size: 5rem !important;
+  }
+  #addCo img { display: none; }
+  #form-error { font-size: 3rem; }
+}
+
+/* PACMAN loading animation ! */
+.lds-css { display: inline-block; }
+@keyframes lds-pacman-1 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes lds-pacman-1 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+@keyframes lds-pacman-2 {
+  0% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  50% {
+    -webkit-transform: rotate(225deg);
+    transform: rotate(225deg);
+  }
+  100% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+@-webkit-keyframes lds-pacman-2 {
+  0% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  50% {
+    -webkit-transform: rotate(225deg);
+    transform: rotate(225deg);
+  }
+  100% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+@keyframes lds-pacman-3 {
+  0% {
+    -webkit-transform: translate(190px, 0);
+    transform: translate(190px, 0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate(70px, 0);
+    transform: translate(70px, 0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes lds-pacman-3 {
+  0% {
+    -webkit-transform: translate(190px, 0);
+    transform: translate(190px, 0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate(70px, 0);
+    transform: translate(70px, 0);
+    opacity: 1;
+  }
+}
+.lds-pacman {
+  position: relative;
+}
+.lds-pacman > div:nth-child(2) div {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 120px;
+  height: 60px;
+  border-radius: 120px 120px 0 0;
+  background: #f3b72e;
+  -webkit-animation: lds-pacman-1 1s linear infinite;
+  animation: lds-pacman-1 1s linear infinite;
+  -webkit-transform-origin: 60px 60px;
+  transform-origin: 60px 60px;
+}
+.lds-pacman > div:nth-child(2) div:nth-child(2) {
+  -webkit-animation: lds-pacman-2 1s linear infinite;
+  animation: lds-pacman-2 1s linear infinite;
+}
+.lds-pacman > div:nth-child(1) div {
+  position: absolute;
+  top: 92px;
+  left: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #3869c5;
+  -webkit-animation: lds-pacman-3 1s linear infinite;
+  animation: lds-pacman-3 1s linear infinite;
+}
+.lds-pacman > div:nth-child(1) div:nth-child(1) {
+  -webkit-animation-delay: -0.67s;
+  animation-delay: -0.67s;
+}
+.lds-pacman > div:nth-child(1) div:nth-child(2) {
+  -webkit-animation-delay: -0.33s;
+  animation-delay: -0.33s;
+}
+.lds-pacman > div:nth-child(1) div:nth-child(3) {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+.lds-pacman {
+  width: 200px !important;
+  height: 200px !important;
+  -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+  transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+}

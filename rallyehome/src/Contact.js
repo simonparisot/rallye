@@ -1,16 +1,19 @@
-import React, { Component } from "react";
- 
-class Contact extends Component {
-  render() {
-    return (
-      <div>
-        <h2>GOT QUESTIONS?</h2>
-        <p>The easiest thing to do is post on
-        our <a href="http://forum.kirupa.com">forums</a>.
-        </p>
-      </div>
-    );
-  }
-}
- 
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+export const Contact = () => (
+  <div>
+    <h2>Nous contacter</h2>
+
+    <section>
+      <p>Travail en cours, soyez patients <span role="img" aria-label="">😌</span></p>
+    </section>
+
+    <nav>
+      <NavLink to="/"> <button> <FontAwesomeIcon icon="arrow-left" /> Retour</button>      </NavLink>
+    </nav>
+  </div>
+);
+
 export default Contact;
