@@ -17,7 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "aws s3 sync build/ s3://rallye-hiver-home",
+    "deploy": "aws s3 sync build/ s3://rallye-hiver-home && aws s3 cp s3://rallye-hiver-home/index.html s3://rallye-hiver-home/index.html --cache-control 'no-cache' --metadata-directive REPLACE",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
