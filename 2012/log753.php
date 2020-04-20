@@ -1,7 +1,7 @@
 ﻿<?php
 
-$link = mysql_connect("localhost", "rallyedh_simon", "6778");
-$db = mysql_select_db('rallyedh_rallye', $link);
+$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
+
 
 ?>
 <html>
@@ -32,33 +32,33 @@ if(isset($_POST['equipe']) && !isset($_POST['all'])){
 		
 		if(is_numeric($wat[0])){
 			$wat = explode(" ", $_POST['equipe'], 2);
-			$res = mysql_query("SELECT * FROM `log` WHERE `log`.`enigme` = '".$wat[0]."' AND `log`.`equipe` LIKE '%".$wat[1]."%' ORDER BY  `log`.`id` DESC");			
+			$res = mysqli_query($link, "SELECT * FROM `log` WHERE `log`.`enigme` = '".$wat[0]."' AND `log`.`equipe` LIKE '%".$wat[1]."%' ORDER BY  `log`.`id` DESC");			
 		}
 		if(is_numeric($wat[count($wat)-1])){
 			$wat2 = $wat[0];
 			for($i = 1; $i < count($wat)-1; $i++){
 				$wat2 .= ' ' . $wat[$i];
 			}
-			$res = mysql_query("SELECT * FROM `log` WHERE `log`.`enigme` = '".$wat[count($wat)-1]."' AND `log`.`equipe` LIKE '%".$wat2."%' ORDER BY  `log`.`id` DESC");			
+			$res = mysqli_query($link, "SELECT * FROM `log` WHERE `log`.`enigme` = '".$wat[count($wat)-1]."' AND `log`.`equipe` LIKE '%".$wat2."%' ORDER BY  `log`.`id` DESC");			
 		}
 		
 	}else{
 	
-		$res = mysql_query("SELECT * FROM `log` WHERE `log`.`enigme` = '".$_POST['equipe']."' AND `log`.`enigme` != 0 ORDER BY  `log`.`id` DESC");
-		if(mysql_num_rows($res)==0)$res = mysql_query("SELECT * FROM `log` WHERE `log`.`equipe` LIKE '%".$_POST['equipe']."%' ORDER BY  `log`.`id` DESC");
-		if(mysql_num_rows($res)==0)$res = mysql_query("SELECT * FROM `log` WHERE `log`.`mdp` LIKE '%".$_POST['equipe']."%' ORDER BY  `log`.`id` DESC");
+		$res = mysqli_query($link, "SELECT * FROM `log` WHERE `log`.`enigme` = '".$_POST['equipe']."' AND `log`.`enigme` != 0 ORDER BY  `log`.`id` DESC");
+		if(mysqli_num_rows($res)==0)$res = mysqli_query($link, "SELECT * FROM `log` WHERE `log`.`equipe` LIKE '%".$_POST['equipe']."%' ORDER BY  `log`.`id` DESC");
+		if(mysqli_num_rows($res)==0)$res = mysqli_query($link, "SELECT * FROM `log` WHERE `log`.`mdp` LIKE '%".$_POST['equipe']."%' ORDER BY  `log`.`id` DESC");
 		
 	}
 }
 else{
-	$res = mysql_query("SELECT * FROM `log` ORDER BY  `log`.`id` DESC");
+	$res = mysqli_query($link, "SELECT * FROM `log` ORDER BY  `log`.`id` DESC");
 }
 
-if($res && mysql_num_rows($res) !=0){
-	$nb = mysql_num_rows($res);
+if($res && mysqli_num_rows($res) !=0){
+	$nb = mysqli_num_rows($res);
 	$dateTemp = 0;
 	for($i = 0; $i < $nb; $i++){
-		$element = mysql_fetch_array($res);
+		$element = mysqli_fetch_array($res);
 		$log_i = explode("-", $element['date']);
 		$log_j = explode(" ", $log_i[2]);
 		$log_k = explode(":", $log_j[1]);

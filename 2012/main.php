@@ -150,7 +150,7 @@
 		<div id="accueil" class="<? if($page == "accueil"){ ?>article_actif<? } ?>">
 			<img alt="Rallye d'hiver 2012" src="pictures/accueil.png" />
 			<div class="inside-text">
-					Bienvenu <? if($login){if(isset($row['nom'])){echo $row['nom'].' ';}elseif(isset($_COOKIE["_nom_equipe"])){echo $_COOKIE["_nom_equipe"].' ';}} ?>! 					
+					Bienvenue <? if($login){if(isset($row['nom'])){echo $row['nom'].' ';}elseif(isset($_COOKIE["_nom_equipe"])){echo $_COOKIE["_nom_equipe"].' ';}} ?>! 					
 					Sur ce site, vous pouvez à tout moment consulter les énigmes, les informations importantes et venir débloquer les questionnaires. &Agrave; vous de jouer ! Que souhaitez-vous faire ?<br/><br/>
 					
 					<table style="margin:0px auto 0px auto;text-align:justify;font-size:16px;" cellpadding="<? if($login){ ?>10<? }else{ ?>20<? } ?>">

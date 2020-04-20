@@ -1,14 +1,14 @@
 ﻿<?php
-$link = mysql_connect("localhost", "rallyedh_simon", "6778");
-$db = mysql_select_db('rallyedh_rallye', $link);
-$res = mysql_query("SELECT login, password FROM `Comptes_Utilisateurs` ORDER BY `password` ASC");
+$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
+
+$res = mysqli_query($link, "SELECT login, password FROM `Comptes_Utilisateurs` ORDER BY `password` ASC");
 ?>
 <html>
 <body>
 <table border=1 cellspacing=0 cellpadding=4>
 <?
 for($i=0;$i<37;$i++){
-	$element = mysql_fetch_array($res);
+	$element = mysqli_fetch_array($res);
 	echo '<tr><td>';
 	echo $element['login'];
 	echo'</td><td>';
@@ -18,7 +18,7 @@ for($i=0;$i<37;$i++){
 	$a = crypt($element['password'], "bob");
 	echo $a;
 	echo '</td><td>';
-	mysql_query("	UPDATE `Comptes_Utilisateurs` 
+	mysqli_query($link, "	UPDATE `Comptes_Utilisateurs` 
 					SET `password` = '".$a."' 
 					WHERE `Comptes_Utilisateurs`.`login` ='".$element['login']."' 
 					LIMIT 1" );

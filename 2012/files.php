@@ -10,8 +10,8 @@
 
 if(isset($_GET['bob'])){
 
-	$link = mysql_connect("localhost", "rallyedh_simon", "6778");
-	$db = mysql_select_db('rallyedh_rallye', $link);
+	$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
+	
 
 ?>
 		
@@ -36,12 +36,12 @@ if(isset($_GET['bob'])){
 		if(isset($_POST['dossier']))$upload += 100;
 		$upload += $_POST['nb'];
 		if($upload == 0) $upload = -1;
-		$store = mysql_query("UPDATE `Comptes_Utilisateurs` SET `upload` =  '".$upload."' WHERE `nom` LIKE '%".$_POST['equipe']."%'");
+		$store = mysqli_query($link, "UPDATE `Comptes_Utilisateurs` SET `upload` =  '".$upload."' WHERE `nom` LIKE '%".$_POST['equipe']."%'");
 		if($store){
-			$res = mysql_query("SELECT `nom` FROM `Comptes_Utilisateurs` WHERE `nom` LIKE '%".$_POST['equipe']."%' AND `upload` = '".$upload."'");
-			$nb = mysql_num_rows($res);
+			$res = mysqli_query($link, "SELECT `nom` FROM `Comptes_Utilisateurs` WHERE `nom` LIKE '%".$_POST['equipe']."%' AND `upload` = '".$upload."'");
+			$nb = mysqli_num_rows($res);
 			for($i = 0; $i < $nb; $i++){
-				$select = mysql_fetch_array($res);
+				$select = mysqli_fetch_array($res);
 				if(isset($_POST['dossier'])){
 					if($_POST['nb'] == 0) echo 'L\'équipe '.$select['nom'].' a envoyé son dossier de réponse. L\'équipe est notifiée !<br/>';
 					else 				  echo 'L\'équipe '.$select['nom'].' a envoyé son dossier de réponse et '.$_POST['nb'].' vidéo(s). L\'équipe est notifiée !<br/>';
@@ -65,11 +65,11 @@ if(isset($_GET['bob'])){
 		<ul>
 <?
 
-	$res = mysql_query("SELECT `nom`,`upload` FROM `Comptes_Utilisateurs` WHERE `upload` != '-1' ORDER BY  `nom` ASC");
-	if(!$res)createLog(mysql_error());
-	$nb = mysql_num_rows($res);
+	$res = mysqli_query($link, "SELECT `nom`,`upload` FROM `Comptes_Utilisateurs` WHERE `upload` != '-1' ORDER BY  `nom` ASC");
+	if(!$res)createLog(mysqli_error($link));
+	$nb = mysqli_num_rows($res);
 	for($i = 0; $i < $nb; $i++){
-		$select = mysql_fetch_array($res);
+		$select = mysqli_fetch_array($res);
 		if($select['upload'] >= 100){
 			if(($select['upload'])%100 == 0)  echo '<li>' . $select['nom'] . ' : dossier réponse</li>';
 			else 				  echo '<li>' . $select['nom'] . ' : dossier réponse et '.(($select['upload'])%100).' vidéo(s)</li>';

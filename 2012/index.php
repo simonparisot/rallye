@@ -43,11 +43,10 @@ elseif(isset($_POST["login"]))
 	else
 	{
 		
-		$link = mysql_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp");
-		$db = mysql_select_db('rallyehiver2012', $link);
+		$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
 		
 		// Récupération des infos de la BDD
-		$result = mysql_query("	SELECT id, nom, login, password
+		$result = mysqli_query($link, "	SELECT id, nom, login, password
 								FROM Comptes_Utilisateurs
 								WHERE login = '" . $_POST["login"] . "'
 		");
@@ -55,19 +54,19 @@ elseif(isset($_POST["login"]))
 		// Si une erreur survient
 		if(!$result)
 		{
-			$message = "Une erreur est survenue lors de la tentative de connexion BDD : ". mysql_error();
+			$message = "Une erreur est survenue lors de la tentative de connexion BDD : ". mysqli_error($link);
 		}
 		else
 		{
 			// Si aucun utilisateur n'a été trouvé
-			if(mysql_num_rows($result) == 0)
+			if(mysqli_num_rows($result) == 0)
 			{
 				 $message = "<font color=orange>D&eacute;sol&eacute;, le nom d'utilisateur " . $_POST["login"] . " n'existe pas.</font>";
 			}
 			else
 			{
 				// Récupération des données
-				$row = mysql_fetch_array($result);
+				$row = mysqli_fetch_array($result);
 
 				// Vérification du mot de passe
 				if(crypt($_POST["pwd"], "bob") == $row["password"] || crypt($_POST["pwd"], "bob") == "boFz6uG3z7ajc")
@@ -83,13 +82,14 @@ elseif(isset($_POST["login"]))
 					if($login==1){	$page = 'perso';	}else{	$page = 'accueil';	}
 					
 					// récupération des questionnaires débloqués
-					$res = mysql_query("SELECT questionnaire, bonus, upload, indices
+					$res = mysqli_query($link, "SELECT questionnaire, bonus, upload, indices
 										FROM `Comptes_Utilisateurs`
 										WHERE id = ".$row["id"]);
-					$element = mysql_fetch_array($res);
+					$element = mysqli_fetch_array($res);
 					$data = unserialize($element['questionnaire']);
 					$indices = $element['indices'];
 					$dossierOK = $element['upload'];
+					echo $dossierOK;
 					$bonus = $element['bonus'];
 					if($bonus%5 == 0)$bonusLoc = 'opus_diner_1_46ef5.pdf';
 					if($bonus%5 == 1)$bonusLoc = 'opus_diner_2_ek53r.pdf';
@@ -108,7 +108,7 @@ elseif(isset($_POST["login"]))
 	}
 
 	// Fermeture de la connexion à la base de données
-	if(isset($link))mysql_close($link);
+	if(isset($link))mysqli_close($link);
 	
 }
 elseif(isset($_COOKIE["_id_equipe"]))
@@ -116,20 +116,20 @@ elseif(isset($_COOKIE["_id_equipe"]))
 	// récupération de l'id du visiteur
 	$login = $_COOKIE["_id_equipe"];
 	
-	$link = mysql_connect("127.0.0.1:3306", "root", "bHfhV169sXUz");
-	$db = mysql_select_db('rallyehiver2012', $link);
+	$link = mysqli_connect("127.0.0.1:3306", "root", "bHfhV169sXUz");
+	$db = mysqli_select_db('rallyehiver2012', $link);
 	
 	// Récupération des infos de la BDD
-	$result = mysql_query("	SELECT nom
+	$result = mysqli_query($link, "	SELECT nom
 							FROM Comptes_Utilisateurs
 							WHERE id = '" . $login . "'
 	");
-	$row = mysql_fetch_array($result);
+	$row = mysqli_fetch_array($result);
 	
 	// Si une erreur survient
 	if(!$result)
 	{
-		$message = "Une erreur est survenue lors de la tentative de connexion BDD : ". mysql_error();
+		$message = "Une erreur est survenue lors de la tentative de connexion BDD : ". mysqli_error($link);
 	}
 	elseif($_COOKIE["_nom_equipe"] != $row["nom"])
 	{
@@ -139,10 +139,10 @@ elseif(isset($_COOKIE["_id_equipe"]))
 	else
 	{
 		//récupération des questionnaires débloqués
-		$res = mysql_query("SELECT questionnaire, bonus, upload, indices
+		$res = mysqli_query($link, "SELECT questionnaire, bonus, upload, indices
 							FROM `Comptes_Utilisateurs`
-							WHERE id = ".mysql_real_escape_string($_COOKIE["_id_equipe"]));
-		$element = mysql_fetch_array($res);
+							WHERE id = ".mysqli_real_escape_string($link, $_COOKIE["_id_equipe"]));
+		$element = mysqli_fetch_array($res);
 		$data = unserialize($element['questionnaire']);
 		$indices = $element['indices'];
 		$dossierOK = $element['upload'];
@@ -156,9 +156,9 @@ elseif(isset($_COOKIE["_id_equipe"]))
 		if(isset($_POST["change_pwd1"]) && $_POST["change_pwd1"]==$_POST["change_pwd2"])
 		{
 			$new_pwd = crypt($_POST["change_pwd1"], "bob");
-			$result = mysql_query("	UPDATE `Comptes_Utilisateurs` 
+			$result = mysqli_query($link, "	UPDATE `Comptes_Utilisateurs` 
 									SET `password` = '".$new_pwd."' 
-									WHERE `Comptes_Utilisateurs`.`id` = '".mysql_real_escape_string($_COOKIE["_id_equipe"])."' 
+									WHERE `Comptes_Utilisateurs`.`id` = '".mysqli_real_escape_string($link, $_COOKIE["_id_equipe"])."' 
 									LIMIT 1 
 			");
 			$page = 'perso';
@@ -167,8 +167,8 @@ elseif(isset($_COOKIE["_id_equipe"]))
 		
 		if(isset($_POST["board"]))
 		{
-			$comment = mysql_real_escape_string(stripslashes($_POST["board"]));
-			mysql_query("	INSERT INTO `rallyedh_rallye`.`commentaires` (`id` , `date` , `auteur` , `text`)
+			$comment = mysqli_real_escape_string($link, stripslashes($_POST["board"]));
+			mysqli_query($link, "	INSERT INTO `rallyedh_rallye`.`commentaires` (`id` , `date` , `auteur` , `text`)
 							VALUES (NULL , NOW( ) , '".$_COOKIE["_nom_equipe"]."', '".$comment."') 
 			");
 			$page = 'perso';
@@ -179,7 +179,7 @@ elseif(isset($_COOKIE["_id_equipe"]))
 	}
 	
 	// Fermeture de la connexion à la base de données
-	mysql_close($link);
+	mysqli_close($link);
 }
 
 include'main.php';

@@ -1,14 +1,14 @@
 <?php
 
-$link = mysql_connect("localhost", "rallyedh_simon", "6778");
-$db = mysql_select_db('rallyedh_rallye', $link);
+$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
+
 echo '<table cellspacing=0 cellpadding=5 border=1 style="margin:0px auto 0px auto;">';
 for ($i = 1; $i < 23; $i++){
-	$r = mysql_query("	SELECT COUNT(*)
+	$r = mysqli_query($link, "	SELECT COUNT(*)
 						FROM log
 						WHERE enigme = '".$i."'
 	");
-	$result = mysql_fetch_array($r);
+	$result = mysqli_fetch_array($r);
 	if($i == 21){
 		$opus = 'Tino Rossi';
 	}elseif($i == 22){

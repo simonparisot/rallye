@@ -1,25 +1,25 @@
 <?php
 
-$link = mysql_connect("localhost", "rallyedh_simon", "6778");
-$db = mysql_select_db('rallyedh_rallye', $link);
+$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
 
-$res = mysql_query("SELECT *  
+
+$res = mysqli_query($link, "SELECT *  
 					FROM `log` 
 					WHERE (`log`.`equipe` LIKE '%".$_GET['e']."%' AND `log`.`ok` = 1) 
 					GROUP BY `log`.`mdp`, `log`.`enigme` 
 					ORDER BY  `log`.`date` ASC");
-$res2 = mysql_query("SELECT *  
+$res2 = mysqli_query($link, "SELECT *  
 					FROM `log` 
 					WHERE (`log`.`equipe` LIKE '%".$_GET['e']."%' AND `log`.`date` >= '2011-12-20 00:00:00') 
 					GROUP BY `log`.`mdp`, `log`.`enigme`, `log`.`ok` 
 					ORDER BY  `log`.`date` ASC");
-$res3 = mysql_query("SELECT questionnaire, bonus 
+$res3 = mysqli_query($link, "SELECT questionnaire, bonus 
 					FROM `Comptes_Utilisateurs` 
 					WHERE `nom` LIKE '%".$_GET['e']."%'");
 	
-if($res && mysql_num_rows($res) !=0){
+if($res && mysqli_num_rows($res) !=0){
 
-	$element = mysql_fetch_array($res3);
+	$element = mysqli_fetch_array($res3);
 	$questio = unserialize($element['questionnaire']);
 	$total = 0;	
 	for ($y = 0; $y < 21; $y++){
@@ -31,8 +31,8 @@ if($res && mysql_num_rows($res) !=0){
 		$total++;
 	}
 
-	$nb = mysql_num_rows($res);
-	$nb2 = mysql_num_rows($res2);
+	$nb = mysqli_num_rows($res);
+	$nb2 = mysqli_num_rows($res2);
 	
 	$max = 2*floor(($total+2)/2);
 	
@@ -52,7 +52,7 @@ if($res && mysql_num_rows($res) !=0){
 	$taille = $total-$nb;
 	echo '[(new Date("2011/12/20 00:00:00")).getTime(), ' . $taille . ']';
 	for($i = 0; $i < $nb2; $i++){
-			$element = mysql_fetch_array($res2);
+			$element = mysqli_fetch_array($res2);
 			
 			$log_i = explode("-", $element['date']);
 			$log_j = explode(" ", $log_i[2]);

@@ -109,6 +109,7 @@ function chargerEnigme (link) {
         var url = 'enigmes/img/Enigme '+active()+' - '+$(link).text()+'.jpg';
         $('.downloadButton').show();
     }
+    url = url.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     $('.panel-enigme').html('<img src="'+url+'">');
     
 

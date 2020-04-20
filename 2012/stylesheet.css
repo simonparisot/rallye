@@ -1,9 +1,9 @@
-﻿@font-face { font-family: self-calibri; src: url('calibri.ttf'); }
-@font-face { font-family: self-calibri; font-weight: bold; src: url('calibrib.ttf'); }
+﻿@font-face { font-family: droidsans; src: url('droidsans.ttf'); }
+@font-face { font-family: droidsans; font-weight: bold; src: url('droidsansb.ttf'); }
 
 body{
 	background-color: #000;
-	font-family: calibri, self-calibri, times, Helvetica, sans-serif;
+	font-family: droidsans, sans-serif;
 	font-size:16px;
 }
 

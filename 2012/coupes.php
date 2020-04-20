@@ -7,21 +7,21 @@ if(isset($_GET['nimda'])){
 	if(isset($_GET['verbose'])){$v = true;}else{$v = false;}
 	
 	//connection à la BDD
-	$link = mysql_connect("localhost", "rallyedh_simon", "6778");
-	$db = mysql_select_db('rallyedh_rallye', $link);
+	$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
+	
 	
 
 	// Récupération du nombre d'énigme débloquées pour chaque équipe
 	// ------------------------------------------------------------
-	$res = mysql_query("SELECT nom, questionnaire 
+	$res = mysqli_query($link, "SELECT nom, questionnaire 
 						FROM `Comptes_Utilisateurs` 
 						WHERE id != 1 AND id != 2 AND id != 8 AND id != 33 AND id != 47 AND id != 23 AND id != 30 AND id != 14 AND id != 51 AND id != 43  AND id != 49 AND id != 22  AND id != 28  AND id != 10 AND id != 54 AND id != 7
 	");
-	$nb_equipe = mysql_num_rows($res);
+	$nb_equipe = mysqli_num_rows($res);
 	
 	for ($i = 0; $i < $nb_equipe; $i++){
 
-		$element = mysql_fetch_array($res);
+		$element = mysqli_fetch_array($res);
 		$questio = unserialize($element['questionnaire']);
 		
 		$compteur = 0;
@@ -44,16 +44,16 @@ if(isset($_GET['nimda'])){
 	$currentTime = time();
 	
 	//on selectionne dans la BDD tous les logs (groupé par équipe, mot de passe et numéro d'énigme)
-	$res = mysql_query("SELECT * 
+	$res = mysqli_query($link, "SELECT * 
 						FROM `log` 
 						WHERE `enigme` != 22 AND `equipe` != 'Simon' AND `equipe` != 'Cha' AND `equipe` != 'Les Roches' AND `equipe` != 'H&eacute;miole' AND `equipe` != 'Les Villepreusiens' AND `equipe` != 'La Petite Fugue' AND `equipe` != 'Geni&egrave;vre' AND `equipe` != 'Les Hibernants' AND `equipe` != 'Les Othellistes' AND `equipe` != 'Dumas' AND `equipe` != 'Les Trilles' AND `equipe` != 'Toto' AND `equipe` != 'Debars' AND `equipe` != 'Michounet' AND `equipe` != 'Breizh Storming'
 						GROUP BY `mdp`, `equipe`, `enigme` 
 						ORDER BY `log`.`id` ASC");
-	$nb_log = mysql_num_rows($res);
+	$nb_log = mysqli_num_rows($res);
 	
 	for($i = 0; $i < $nb_log; $i++){
 	
-		$element = mysql_fetch_array($res);
+		$element = mysqli_fetch_array($res);
 		$equipe = stripslashes($element['equipe']);
 		
 		// si on est déjà tombé sur des logs de cette équipes (elle est déjà enregistré dans les tableaux)
@@ -88,13 +88,13 @@ if(isset($_GET['nimda'])){
 	// Récupération du nombre d'énimge débloquées enregistrées dans les logs.
 	// C'est inférieur pour certains cas au nombre total d'énigme débloquées
 	// ----------------------------------------------------------------------
-	$res = mysql_query("SELECT `equipe`, COUNT(DISTINCT mdp) AS 'nb' 
+	$res = mysqli_query($link, "SELECT `equipe`, COUNT(DISTINCT mdp) AS 'nb' 
 						FROM `log` 
 						WHERE `ok` = 1 AND `equipe` != 'Simon' AND `equipe` != 'Cha' AND `equipe` != 'Les Roches' AND `equipe` != 'H&eacute;miole' AND `equipe` != 'Les Villepreusiens' AND `equipe` != 'La Petite Fugue' AND `equipe` != 'Geni&egrave;vre' AND `equipe` != 'Les Hibernants' AND `equipe` != 'Les Othellistes' AND `equipe` != 'Dumas' AND `equipe` != 'Les Trilles' AND `equipe` != 'Toto' AND `equipe` != 'Debars' AND `equipe` != 'Michounet' AND `equipe` != 'Breizh Storming'
 						GROUP BY `equipe`");
-	$nb_log = mysql_num_rows($res);
+	$nb_log = mysqli_num_rows($res);
 	for($i = 0; $i < $nb_log; $i++){
-		$element = mysql_fetch_array($res);
+		$element = mysqli_fetch_array($res);
 		$equipe = stripslashes($element['equipe']);
 		$logEnigme[$equipe] = $element['nb'];
 	}
@@ -182,11 +182,11 @@ if(isset($_GET['nimda'])){
 	
 	}
 	
-	$res = mysql_query("SELECT `nom`, `indices` FROM `Comptes_Utilisateurs` WHERE `indices`=(SELECT MAX(`indices`) FROM `Comptes_Utilisateurs`)");
-	if(!$res) echo mysql_error();
-	$nb = mysql_num_rows($res);
+	$res = mysqli_query($link, "SELECT `nom`, `indices` FROM `Comptes_Utilisateurs` WHERE `indices`=(SELECT MAX(`indices`) FROM `Comptes_Utilisateurs`)");
+	if(!$res) echo mysqli_error($link);
+	$nb = mysqli_num_rows($res);
 	for($i = 0; $i < $nb; $i++){
-		$select = mysql_fetch_array($res);
+		$select = mysqli_fetch_array($res);
 		if($i == 0) echo 	$select['nom'];
 		else echo ' ex aequo avec ' . $select['nom'];
 	}

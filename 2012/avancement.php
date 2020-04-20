@@ -10,19 +10,23 @@ $enigmes = array(	"La Visite amusee",			"Les Bottes de chef-lieu",			"Strasbourg
 
 $avancement = array();
 $stat = array(0, 0, 0);
-/*$res = mysql_query("SELECT nom, login, questionnaire, bonus, indices, upload 
+/*$res = mysqli_query($link, "SELECT nom, login, questionnaire, bonus, indices, upload 
 					FROM `Comptes_Utilisateurs` 
 					WHERE id != 1 AND id != 2 AND id != 8 AND id != 33 AND id != 47 AND id != 23 AND id != 30 AND id != 14 AND id != 51 AND id != 43  AND id != 49 AND id != 22  AND id != 28  AND id != 10 AND id != 54 AND id != 7
 ");*/
-$res = mysql_query("SELECT nom, login, questionnaire, bonus, indices, upload 
+$res = mysqli_query($link, "SELECT nom, login, questionnaire, bonus, indices, upload 
+					FROM `Comptes_Utilisateurs` 
+					WHERE id = 3 OR id = 4
+");
+/*$res = mysqli_query($link, "SELECT nom, login, questionnaire, bonus, indices, upload 
 					FROM `Comptes_Utilisateurs` 
 					WHERE id != 1 AND id != 2 AND id != 8 AND id != 33 AND id != 47
-");
-$nb = mysql_num_rows($res);
+");*/
+$nb = mysqli_num_rows($res);
 
 for ($i = 0; $i < $nb; $i++){
 
-	$element = mysql_fetch_array($res);
+	$element = mysqli_fetch_array($res);
 	$questio = unserialize($element['questionnaire']);
 	
 	$serial = "";
@@ -66,15 +70,15 @@ for ($i = 0; $i < $nb; $i++){
 	/*if($element['nom'] == "D'hiver'di") $nom = "hiver";
 	else if($element['nom'] == "Notes'in Gammes") $nom = "Gammes";
 	else $nom = $element['nom'];
-	$query = mysql_query("	SELECT UNIX_TIMESTAMP(`date`) AS nb 
+	$query = mysqli_query($link, "	SELECT UNIX_TIMESTAMP(`date`) AS nb 
 							FROM `log` 
 							WHERE `equipe` LIKE '%".$nom."%'
 							ORDER BY `date` DESC 
 							LIMIT 1;
 	");
 	if(!$query) echo $element['nom'].'<br/>';
-	if(!$query) echo mysql_error($link).'<br/>';
-	$lastlog = mysql_fetch_array($query);
+	if(!$query) echo mysqli_error($link).'<br/>';
+	$lastlog = mysqli_fetch_array($query);
 	$lastlog = round((time() - $lastlog['nb'])/(24*3600));
 	if($lastlog > 30)$lastlog = 30;
 	$lastlog = 0.02333*(30-$lastlog)+0.3;
@@ -93,19 +97,19 @@ for ($i = 0; $i < $nb; $i++){
 
 rsort($avancement);
 
-$res = mysql_query("SELECT * FROM `commentaires` ORDER BY  `commentaires`.`date` ASC");
-$nb = mysql_num_rows($res);
+$res = mysqli_query($link, "SELECT * FROM `commentaires` ORDER BY  `commentaires`.`date` ASC");
+$nb = mysqli_num_rows($res);
 for($i = 0; $i < $nb; $i++){
-	$element = mysql_fetch_array($res);
+	$element = mysqli_fetch_array($res);
 	$com_auteur[$i] = $element['auteur'];
 	$com_date[$i] = $element['date'];
 	$com_text[$i] = $element['text'];
 }
 
-$res = mysql_query("SELECT * FROM `log` ORDER BY `log`.`id` DESC LIMIT 0,40");
-$nb = mysql_num_rows($res);
+$res = mysqli_query($link, "SELECT * FROM `log` ORDER BY `log`.`id` DESC LIMIT 0,40");
+$nb = mysqli_num_rows($res);
 for($i = 0; $i < $nb; $i++){
-	$element = mysql_fetch_array($res);
+	$element = mysqli_fetch_array($res);
 	$log_e = stripslashes($element['mdp']);
 	$log_f = stripslashes($element['equipe']);
 	if(strlen($log_e) > 17){
@@ -133,14 +137,14 @@ for($i = 0; $i < $nb; $i++){
 
 // Calcul des stats
 	//équipes actives
-/*	$res = mysql_query("SELECT COUNT(DISTINCT `guess`) AS nb 
+/*	$res = mysqli_query($link, "SELECT COUNT(DISTINCT `guess`) AS nb 
 						FROM `Comptes_Utilisateurs` 
 						WHERE (`guess` != 'a:0:{}' AND id != 1 AND id != 2 AND id != 8 AND id != 33 AND id != 47 AND id != 23 AND id != 30 AND id != 14 AND id != 51 AND id != 43  AND id != 49 AND id != 22  AND id != 28  AND id != 10 AND id != 54 AND id != 7)");
 */
-	$res = mysql_query("SELECT COUNT(DISTINCT `guess`) AS nb 
+	$res = mysqli_query($link, "SELECT COUNT(DISTINCT `guess`) AS nb 
 						FROM `Comptes_Utilisateurs` 
-						WHERE (`guess` != 'a:0:{}' AND id != 1 AND id != 2 AND id != 8 AND id != 33 AND id != 47");
-	$element = mysql_fetch_array($res);
+						WHERE (`guess` != 'a:0:{}' AND id != 1 AND id != 2 AND id != 8 AND id != 33 AND id != 47)");
+	$element = mysqli_fetch_array($res);
 	$stat[1] = $element['nb'];
 	$stat[0] = round($stat[0]/($stat[1]*0.2));
 	
