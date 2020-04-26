@@ -68,7 +68,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin']) {
 		<div class="title">Enigmes</div>
 		<div class="main-content">
 			<div class="col-gauche"><? include $auth ? 'views/enigmes-list.php' : 'views/enigmes-list-public.php'; ?></div>
-			<div class="col-droite"><? include $auth ? 'views/enigmes-content.php' : ''; ?></div>
+			<div class="col-droite"><? if($auth) include 'views/enigmes-content.php'; ?></div>
 		</div>
 	</div>
 
@@ -77,7 +77,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin']) {
 		<div class="title"><? echo $auth ? 'Parcours' : 'Le Rallye d\'Hiver'; ?></div>
 		<div class="main-content">
 			<div class="col-gauche"><? include $auth ? 'views/quest-list.php' : 'views/info.php'; ?></div>
-			<div class="col-droite"><? include $auth ? 'views/quest-content.php' : ''; ?></div>
+			<div class="col-droite"><? if($auth) include 'views/quest-content.php'; ?></div>
 		</div>
 	</div>
 

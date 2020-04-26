@@ -8,6 +8,10 @@
  *
  * ------------------------------------------------------------------- */
 
+$expiration = time() + (3*30*24*60*60);
+$login = false;
+$page = 'accueil';
+
 ini_set('session.gc_maxlifetime', 7200);
 session_start();
 $auth = false; // variable globale utilisée pour savoir si l'utilisateur est authentifié
