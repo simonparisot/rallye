@@ -26,7 +26,7 @@ $sth = $bdd->prepare('SELECT quest, enigmes FROM rallye_people WHERE nom = :nom 
 
 <div class="communication">
 <?/*
-	Le rallye 2016 étant terminé, voici quelques informations qui, j'en suis sûr, vous intéresseront ! Merci à tous pour votre participation et votre présence au dîner.<br>
+	Le rallye 2016 est terminé ! Merci à tous pour votre participation et votre présence au dîner.<br>
 	<ul>
 	<li><a href="ressources/corrections.pdf" target="_blank">Le dossier des corrections</a></li>
 	<li><a href="classement/" target="_blank">Le classement</a></li>
@@ -62,6 +62,7 @@ $sth = $bdd->prepare('SELECT quest, enigmes FROM rallye_people WHERE nom = :nom 
 
 <div class="docsutiles">
 	<span>Quelques liens utiles</span>
+	<a href="classement/"><div class="file"><img src="ressources/img/classement.png">Les résultats de 2016</div></a>
 	<a href="ressources/Règlement RH2016.pdf"><div class="file"><img src="ressources/img/file.png">Le règlement</div></a>
 	<a href="ressources/Les Rallyes pour les nuls.pdf"><div class="file"><img src="ressources/img/file.png">Les Rallyes pour les nuls</div></a>
 	<a href="ressources/RH2016 - Les énigmes.zip"><div class="file"><img src="ressources/img/zip.png">Télécharger toutes les énigmes</div></a>

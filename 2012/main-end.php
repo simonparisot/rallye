@@ -7,7 +7,7 @@
 	<link rel="icon" type="image/png" href="pictures/favicon2.png" />
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/toolbox.js"></script>
-	<script type="text/javascript" src="js/display10.js"></script>
+	<script type="text/javascript" src="js/display11.js"></script>
 	<script type="text/javascript" src="js/end.js"></script>
 	<script type="text/javascript" src="js/controle.js"></script>
 	<script type="text/javascript" src="js/lightbox.js"></script>
@@ -54,7 +54,7 @@
 						echo 'lieu_deblo['.$cle.'] = false;';
 					}
 				}
-				echo 'var indices = '.$indices.';';
+				echo 'var indices = 0;';
 				echo 'var enigmes = '.$nb.';';
 			}
 		?>
@@ -183,7 +183,7 @@
 		
 		<div id="perso" class="<? if($page == "perso"){ ?>article_actif<? } ?>">
 			<? if($login!=1){ ?>
-			<img alt="" src="pictures/groupe<? echo $login; ?>.png" style="margin-left:5px;" />
+			<img alt="" src="pictures/groupe-x.png" style="margin-left:5px;" />
 			<? }else{ ?>
 			<img alt="" src="pictures/groupe1.png" style="margin-left:5px;" />
 			<? } ?>
@@ -198,10 +198,10 @@
 				<table cellpadding=5>
 					<tr>
 						<? if($login!=1){ ?>
-							<td><input class="onglet" onglet="#synthese" type="submit" value="Synthèse" style="width:100px;height:18px;" /></td>
-							<td><input class="onglet" onglet="#board_fame" type="submit" value="Enigme diner" style="width:100px;height:18px;" /></td>
-							<!--td><input class="onglet" onglet="#board_c" type="submit" value="Donner votre avis" style="width:110px;height:18px;" /></td>
-							<td><input class="onglet" onglet="#board_upload" type="submit" value="Envoyer le dossier de réponse" style="width:200px;height:18px;" /></td-->
+							<td><input class="onglet" onglet="#synthese" type="submit" value="Questionnaires" style="width:100px;height:18px;" /></td>
+							<td><input class="onglet" onglet="#board_fame" type="submit" value="Énigmes diner" style="width:100px;height:18px;" /></td>
+							<td><input class="onglet" onglet="#board_c" type="submit" value="Résultats 2012" style="width:100px;height:18px;" /></td>
+							<!--td><input class="onglet" onglet="#board_upload" type="submit" value="Envoyer le dossier de réponse" style="width:200px;height:18px;" /></td-->
 						<? }else{ ?>
 							<td><input class="onglet" onglet="#synthese" type="submit" value="Synthèse" style="width:67px;height:18px;" /></td>
 							<td><input class="onglet" onglet="#board_c" type="submit" value="Commentaires" style="width:100px;height:18px;" /></td>
@@ -209,7 +209,7 @@
 							<td><input class="onglet" onglet="#board_fame" type="submit" value="Hall of fame" style="width:80px;height:18px;" /></td>
 							<td><input class="onglet" onglet="#board_upload" type="submit" value="Fichiers uploadés" style="width:120px;height:18px;" /></td>
 						<? } ?>
-							<td><input type="submit" value="Déconnexion" onclick="acceder('index.php?deco=1');document.location.href='index.php?page=connexion';" style="width:100px;height:18px;" /></td>
+							<!--td><input type="submit" value="Déconnexion" onclick="acceder('index.php?deco=1');document.location.href='index.php?page=connexion';" style="width:100px;height:18px;" /></td-->
 					</tr>
 				</table>
 				
@@ -220,27 +220,22 @@
 						<? }elseif(isset($comment_ok)){ ?><br/>Merci pour votre commentaire !<? } ?>
 					</div>
 					
-					<div id="synthese" style="margin-left:7px;text-align:left;">
+					<div id="synthese" style="margin-left:10px;text-align:left;">
 						<br/>
-						<table cellspacing=15 style="margin:0px auto 0px auto;font-size:18px;">
-							<tr><td><a class="onglet" onglet="#board_res" href="#"><img src="pictures/icon3.png" style="margin-top:3px;"></a></td><td><a class="onglet" onglet="#board_res" href="#">Résultats</a></td></tr>
+						<h3>Vos questionnaires débloqués</h3>
+						<ul id="ul"></ul>
+					</div>
+					
+					<div id="board_c" style="margin-left:10px;text-align:left;display:none;">
+						<br/>
+						<h3>Les résultats du Rallye 2012</h3>
+						<table cellspacing=15 style="font-size:18px;">
+							<tr><td><a class="onglet" onglet="#board_res" href="#"><img src="pictures/icon3.png" style="margin-top:3px;"></a></td><td><a class="onglet" onglet="#board_res" href="#">Classement et prix</a></td></tr>
 							<tr><td><a class="onglet" onglet="#board_stat" href="#"><img src="pictures/icon4.png" style="margin-top:3px;"></a></td><td><a class="onglet" onglet="#board_stat" href="#">Quelques statistiques</a></td></tr>
-							<tr><td><a href="doc/solutions.pdf"><img src="pictures/icon6.png" style="margin-top:3px;"></a></td><td><a href="doc/solutions.pdf">Télécharger le dossier des solutions</a></td></tr>
-							<tr><td><a href="doc/montage.mpg"><img src="pictures/icon2.png" style="margin-top:3px;"></a></td><td><a href="doc/montage.mpg">Télécharger le montage des LipDub</a></td></tr>
-							<tr><td><a href="doc/questionnaires.pdf"><img src="pictures/icon9.png" style="margin-top:3px;"></a></td><td><a href="doc/questionnaires.pdf">Télécharger tous les questionnaires</a></td></tr>
-							<tr><td><a class="onglet" onglet="#board_c" href="#"><img src="pictures/icon8.png" style="margin-top:3px;"></a></td><td><a class="onglet" onglet="#board_c" href="#">Nous laisser un message</a></td></tr>
 						</table>
 					</div>
 					
-					<div id="board_c" style="margin-left:100px;text-align:left;display:none;">
-						<br/>
-						<form action="index.php" method="post">
-							<textarea name="board" id="board" style="margin:0px auto 0px auto;"></textarea><br/>
-							<input type="submit" value="Envoyer" />
-						</form>
-					</div>
-					
-					<div id="board_fame" style="margin-left:7px;text-align:justify;display:none;">
+					<div id="board_fame" style="margin-left:10px;text-align:left;display:none;">
 						<br/>
 						<p id="texteDiner" style="text-align:center;">
 						<b>Vous pouvez maintenant accéder à toutes les énigmes diner.<br/>Cliquez simplement sur une énigme pour la voir ou la télécharger.</b>
@@ -329,22 +324,6 @@
 					
 					<div id="board_stat" style="display:none;margin:20px 10px;height:340px;">
 						<img src="pictures/stat.png" />
-						<a href="#" onClick="light('<? 
-							
-							if($login){
-								if(isset($row['nom'])){
-									$name = $row['nom'];
-								}elseif(isset($_COOKIE["_nom_equipe"])){
-									$name = $_COOKIE["_nom_equipe"];
-								}
-								//moche, mais j'ai la flemme de faire mieux ;) à modifier pour améliorer la scalabilité
-								if($name == "D'hiver'di"){ $name = 'hiver'; }elseif($name == "Notes'in Gammes"){ $name = 'gammes'; }else{ $name = htmlentities($name); }
-								echo $name;
-							}
-						
-						?>', 22);return false;" style="position:relative;top:40px;left:182px;">
-							<img src="pictures/stat2.png" />
-						</a>
 					</div>
 				
 				<? }else{ 	/*---------------------------- PAGE ADMIN -------------------------*/ ?>
@@ -741,9 +720,7 @@
 		</div>
 	
 	</div>
-	
-	<div style="width:750px;text-align:center;margin-top:5px;"><a href="mailto:simon@rallyedhiver2012.fr"><font color=#333333 size=3>Pour contacter le webmaster du site, cliquez ici.</font></a></div>
-	
+		
 	<a href="#" onclick="show_facileajouez('e');"><div class="zone" style="height: 30px; top: 22px; width: 23px; left: 316px;"></div></a>
 	<a href="#" onclick="show_facileajouez('p');"><div class="zone" style="height: 50px; top: 15px; width: 25px; left: 353px;"></div></a>
 	<a href="#" onclick="show_facileajouez('r');"><div class="zone" style="width: 15px; left: 475px; height: 30px; top: 22px;"></div></a>

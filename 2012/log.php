@@ -1,6 +1,6 @@
 <?php
 
-$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
+require_once 'db.php';
 
 echo '<table cellspacing=0 cellpadding=5 border=1 style="margin:0px auto 0px auto;">';
 for ($i = 1; $i < 23; $i++){

@@ -1,7 +1,6 @@
 ﻿<?php
 
-$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
-
+require_once 'db.php';
 
 ?>
 <html>

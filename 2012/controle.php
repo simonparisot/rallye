@@ -1,14 +1,12 @@
 ﻿<?php
 
+require_once 'db.php';
+
 if(isset($_COOKIE["_id_equipe"])){
 
 	// vérification d'un mot de passe/numéro d'énigme
 	if(isset($_GET['t'])){
 			
-		// connexion à mysqli
-		$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
-		
-
 		include 'pancakes.php';
 		
 		$ok = "false~Désolé, ce n'est pas le bon mot de passe ou le numéro d'énigme ne correspond pas.<br><br>";
@@ -41,16 +39,16 @@ if(isset($_COOKIE["_id_equipe"])){
 		
 		//on stocke le mot de passe dans la BDD pour vérifier le temps entre chaque essai
 		$res = mysqli_query($link, "SELECT guess
-							FROM `Comptes_Utilisateurs`
+							FROM `comptes_utilisateurs`
 							WHERE id = ".mysqli_real_escape_string($link, $_COOKIE['_id_equipe']));
 
 		$element = mysqli_fetch_array($res);
 		$data = unserialize($element['guess']);
 		array_push($data, $_GET["new"]."~".time());
 			
-		mysqli_query($link, "	UPDATE `Comptes_Utilisateurs` 
+		mysqli_query($link, "	UPDATE `comptes_utilisateurs` 
 						SET `guess` = '".serialize($data)."' 
-						WHERE `Comptes_Utilisateurs`.`id` =".mysqli_real_escape_string($link, $_COOKIE['_id_equipe'])." 
+						WHERE `comptes_utilisateurs`.`id` =".mysqli_real_escape_string($link, $_COOKIE['_id_equipe'])." 
 						LIMIT 1" );
 
 							
@@ -86,9 +84,9 @@ if(isset($_COOKIE["_id_equipe"])){
 		}elseif($_GET['y'] == 22 && !$wrong){
 		
 			// On incrémente de 5 le numéro de l'énigme bonus stocké en BDD pour signifier que l'énigme est résolue mais tout de même garder l'info sur quelle énigme a été choisie
-			mysqli_query($link, "	UPDATE `Comptes_Utilisateurs` 
+			mysqli_query($link, "	UPDATE `comptes_utilisateurs` 
 							SET `bonus` = `bonus`+5
-							WHERE `Comptes_Utilisateurs`.`id` =".mysqli_real_escape_string($link, $_COOKIE['_id_equipe'])." 
+							WHERE `comptes_utilisateurs`.`id` =".mysqli_real_escape_string($link, $_COOKIE['_id_equipe'])." 
 							LIMIT 1" );
 		}
 		
@@ -111,13 +109,10 @@ if(isset($_COOKIE["_id_equipe"])){
 
 
 	// stockage d'un nouveau questionnaire débloqué
-	if(isset($_GET["store"])){
-
-		$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
-		
+	if(isset($_GET["store"])){		
 		
 		$res = mysqli_query($link, "SELECT questionnaire
-							FROM `Comptes_Utilisateurs`
+							FROM `comptes_utilisateurs`
 							WHERE id = ".mysqli_real_escape_string($link, $_COOKIE['_id_equipe']));
 
 		$element = mysqli_fetch_array($res);
@@ -125,18 +120,15 @@ if(isset($_COOKIE["_id_equipe"])){
 		
 		$data[$_GET["y"]-1]=$_GET["store"].'~'.$_GET["lieu"];
 		
-		$res2 = mysqli_query($link, "UPDATE `Comptes_Utilisateurs` SET `questionnaire` = '".serialize($data)."' WHERE `Comptes_Utilisateurs`.`id` =".mysqli_real_escape_string($link, $_COOKIE['_id_equipe'])." LIMIT 1" );
+		$res2 = mysqli_query($link, "UPDATE `comptes_utilisateurs` SET `questionnaire` = '".serialize($data)."' WHERE `comptes_utilisateurs`.`id` =".mysqli_real_escape_string($link, $_COOKIE['_id_equipe'])." LIMIT 1" );
 	}
 
 
 	// vérification du timing pour le mot de passe
-	if(isset($_GET["mdp"])){
-
-		$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
-		
+	if(isset($_GET["mdp"])){		
 		
 		$res = mysqli_query($link, "SELECT guess
-							FROM `Comptes_Utilisateurs`
+							FROM `comptes_utilisateurs`
 							WHERE id = ".mysqli_real_escape_string($link, $_COOKIE['_id_equipe']));
 
 		$element = mysqli_fetch_array($res);
@@ -158,9 +150,9 @@ if(isset($_COOKIE["_id_equipe"])){
 				}
 			}
 		}
-		mysqli_query($link, "	UPDATE `Comptes_Utilisateurs` 
+		mysqli_query($link, "	UPDATE `comptes_utilisateurs` 
 						SET `guess` = '".serialize($data)."' 
-						WHERE `Comptes_Utilisateurs`.`id` =".mysqli_real_escape_string($link, $_COOKIE['_id_equipe'])." 
+						WHERE `comptes_utilisateurs`.`id` =".mysqli_real_escape_string($link, $_COOKIE['_id_equipe'])." 
 						LIMIT 1" );
 						
 		// si on tente de faire une RAZ, on RAZ ...

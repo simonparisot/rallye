@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 
 // reprise du site, j'ignore les warning et deprecated... c'est un vieux site !
 // error_reporting(E_ERROR | E_PARSE);
@@ -6,17 +6,41 @@
 // -----------------------------------------------------------------------------------------
 //
 //	Site du Rallye d'Hiver 2012
-//	Intégration et graphisme : Simon Parisot (parisot.simon at gmail.com)
+//	IntÃ©gration et graphisme : Simon Parisot (parisot.simon at gmail.com)
 //
 // -----------------------------------------------------------------------------------------
 
-// Définition du temps d'expiration des cookies
+// DÃ©finition du temps d'expiration des cookies
 $expiration = time() + (3*30*24*60*60);
-
-$login = false;
 $page = 'accueil';
 if(isset($_GET["page"])){ $page = $_GET["page"]; }
+
+/*----- Supression de l'authentification utilisateur en mars 2020 / remplacÃ© par une authentification automatique ----- */
+require_once 'db.php';
+setcookie("_nom_equipe", 'Simon', $expiration);
+setcookie("_id_equipe", 2, $expiration);
+$login = 2;
+// rÃ©cupÃ©ration des questionnaires dÃ©bloquÃ©s
+$res = mysqli_query($link, "SELECT questionnaire, bonus, upload, indices FROM `comptes_utilisateurs` WHERE id = 2");
+$element = mysqli_fetch_array($res);
+$data = unserialize($element['questionnaire']);
+
+$indices = $element['indices'];
+$dossierOK = $element['upload'];
+$bonus = $element['bonus'];
+if($bonus%5 == 0)$bonusLoc = 'opus_diner_1_46ef5.pdf';
+if($bonus%5 == 1)$bonusLoc = 'opus_diner_2_ek53r.pdf';
+if($bonus%5 == 2)$bonusLoc = 'opus_diner_3_g75h6.pdf';
+if($bonus%5 == 3)$bonusLoc = 'opus_diner_4_cr6i5.pdf';
+if($bonus%5 == 4)$bonusLoc = 'opus_diner_5_k8fh7.pdf';
+
+mysqli_close($link);
+
+/*----- Supression de l'authentification utilisateur en mars 2020 / remplacÃ© par une authentification automatique -----
+
 if(isset($_GET["message"])){ $message = "<font color=orange>Vous n'&ecirc;tes pas identifi&eacute; actuellement, veuillez vous connecter pour effectuer cette op&eacute;ration. Merci !</font>"; }
+
+$login = false;
 
 if(isset($_GET["deco"]))
 {
@@ -31,10 +55,10 @@ if(isset($_GET["deco"]))
 }
 elseif(isset($_POST["login"]))
 {
-	// par défault, redirection vers la page de connexion (si le login fail)
+	// par dÃ©fault, redirection vers la page de connexion (si le login fail)
 	$page = 'connexion';
 					
-	// Vérification de la validité des champs
+	// VÃ©rification de la validitÃ© des champs
 	if(!preg_match("@^[A-Za-z0-9_]{2,1000}$@", $_POST["login"]))
 	{
 	   $message = "<font color=orange>Votre nom d'utilisateur doit comporter entre 2 et 30 caract&egrave;res<br />\n";
@@ -43,11 +67,9 @@ elseif(isset($_POST["login"]))
 	else
 	{
 		
-		$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
-		
-		// Récupération des infos de la BDD
+		// RÃ©cupÃ©ration des infos de la BDD
 		$result = mysqli_query($link, "	SELECT id, nom, login, password
-								FROM Comptes_Utilisateurs
+								FROM comptes_utilisateurs
 								WHERE login = '" . $_POST["login"] . "'
 		");
 		
@@ -58,32 +80,32 @@ elseif(isset($_POST["login"]))
 		}
 		else
 		{
-			// Si aucun utilisateur n'a été trouvé
+			// Si aucun utilisateur n'a Ã©tÃ© trouvÃ©
 			if(mysqli_num_rows($result) == 0)
 			{
 				 $message = "<font color=orange>D&eacute;sol&eacute;, le nom d'utilisateur " . $_POST["login"] . " n'existe pas.</font>";
 			}
 			else
 			{
-				// Récupération des données
+				// RÃ©cupÃ©ration des donnÃ©es
 				$row = mysqli_fetch_array($result);
 
-				// Vérification du mot de passe
+				// VÃ©rification du mot de passe
 				if(crypt($_POST["pwd"], "bob") == $row["password"] || crypt($_POST["pwd"], "bob") == "boFz6uG3z7ajc")
 				{
-					// Création des cookies
+					// CrÃ©ation des cookies
 					setcookie("_nom_equipe", $row["nom"], $expiration);
 					setcookie("_id_equipe", $row["id"], $expiration);
 
-					// récupération de l'id du visiteur qui se connecte
+					// rÃ©cupÃ©ration de l'id du visiteur qui se connecte
 					$login = $row["id"];
 					
-					// redirection vers la page par défaut
+					// redirection vers la page par dÃ©faut
 					if($login==1){	$page = 'perso';	}else{	$page = 'accueil';	}
 					
-					// récupération des questionnaires débloqués
+					// rÃ©cupÃ©ration des questionnaires dÃ©bloquÃ©s
 					$res = mysqli_query($link, "SELECT questionnaire, bonus, upload, indices
-										FROM `Comptes_Utilisateurs`
+										FROM `comptes_utilisateurs`
 										WHERE id = ".$row["id"]);
 					$element = mysqli_fetch_array($res);
 					$data = unserialize($element['questionnaire']);
@@ -107,21 +129,20 @@ elseif(isset($_POST["login"]))
 		} 
 	}
 
-	// Fermeture de la connexion à la base de données
+	// Fermeture de la connexion Ã  la base de donnÃ©es
 	if(isset($link))mysqli_close($link);
 	
 }
 elseif(isset($_COOKIE["_id_equipe"]))
 {
-	// récupération de l'id du visiteur
+	// rÃ©cupÃ©ration de l'id du visiteur
 	$login = $_COOKIE["_id_equipe"];
 	
-	$link = mysqli_connect("127.0.0.1:3306", "root", "bHfhV169sXUz");
 	$db = mysqli_select_db('rallyehiver2012', $link);
 	
-	// Récupération des infos de la BDD
+	// RÃ©cupÃ©ration des infos de la BDD
 	$result = mysqli_query($link, "	SELECT nom
-							FROM Comptes_Utilisateurs
+							FROM comptes_utilisateurs
 							WHERE id = '" . $login . "'
 	");
 	$row = mysqli_fetch_array($result);
@@ -138,9 +159,9 @@ elseif(isset($_COOKIE["_id_equipe"]))
 	}
 	else
 	{
-		//récupération des questionnaires débloqués
+		//rÃ©cupÃ©ration des questionnaires dÃ©bloquÃ©s
 		$res = mysqli_query($link, "SELECT questionnaire, bonus, upload, indices
-							FROM `Comptes_Utilisateurs`
+							FROM `comptes_utilisateurs`
 							WHERE id = ".mysqli_real_escape_string($link, $_COOKIE["_id_equipe"]));
 		$element = mysqli_fetch_array($res);
 		$data = unserialize($element['questionnaire']);
@@ -156,9 +177,9 @@ elseif(isset($_COOKIE["_id_equipe"]))
 		if(isset($_POST["change_pwd1"]) && $_POST["change_pwd1"]==$_POST["change_pwd2"])
 		{
 			$new_pwd = crypt($_POST["change_pwd1"], "bob");
-			$result = mysqli_query($link, "	UPDATE `Comptes_Utilisateurs` 
+			$result = mysqli_query($link, "	UPDATE `comptes_utilisateurs` 
 									SET `password` = '".$new_pwd."' 
-									WHERE `Comptes_Utilisateurs`.`id` = '".mysqli_real_escape_string($link, $_COOKIE["_id_equipe"])."' 
+									WHERE `comptes_utilisateurs`.`id` = '".mysqli_real_escape_string($link, $_COOKIE["_id_equipe"])."' 
 									LIMIT 1 
 			");
 			$page = 'perso';
@@ -178,9 +199,11 @@ elseif(isset($_COOKIE["_id_equipe"]))
 		if($login == 1){include 'avancement.php';}
 	}
 	
-	// Fermeture de la connexion à la base de données
+	// Fermeture de la connexion Ã  la base de donnÃ©es
 	mysqli_close($link);
 }
 
-include'main.php';
+----- Supression de l'authentification utilisateur en mars 2020 ----- */
+
+include'main-end.php';
 ?>

@@ -1,7 +1,7 @@
 <div class="quest-header">
 	
 	<a class="tooltip" href="#" onclick="window.location = 'controllers/download.php?code='+questcode();return false;">
-		<img class="headerbutton" src="ressources/img/headerbutton1">
+		<img class="headerbutton" src="ressources/img/headerbutton1.png">
 		<span><img class="callout" src="ressources/img/callout.gif">Télécharger ce questionnaire</span>
 	</a>
 

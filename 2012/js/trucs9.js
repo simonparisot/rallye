@@ -167,7 +167,7 @@ function show_quest_deblo(){
 	}
 	
 	document.getElementById("ul").innerHTML = inner;
-	var restant = 10-temp.length;
+	/*var restant = 10-temp.length;
 	switch(restant){
 		case 10:
 			var count = "<br>Vos questionnaires débloqués s'afficheront ici.";
@@ -182,7 +182,7 @@ function show_quest_deblo(){
 			var count = "Voici vos questionnaires débloqués. Il vous en reste "+restant+" à débloquer !";
 			break;
 	}
-	document.getElementById("count").innerHTML = count;
+	document.getElementById("count").innerHTML = count;*/
 }
 
 function zone(x){

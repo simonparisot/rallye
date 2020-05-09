@@ -56,7 +56,7 @@
 						echo 'lieu_deblo['.$cle.'] = false;';
 					}
 				}
-				echo 'var indices = '.$indices.';';
+				echo 'var indices = 0;';
 				echo 'var enigmes = '.$nb.';';
 			}
 		?>
@@ -137,7 +137,7 @@
 			<a id="accueil_b" rel="#accueil"></a>
 	</div>
 	
-	<div id="news">Vous pouvez maintenant accéder à toutes les énigmes diner.</div>
+	<div id="news">Vous êtes sur l'archive du Rallye d'Hiver de 2011-2012</div>
 	
 	<div id="theEnd" style="position:absolute;left:60px;top:260px;width:630px;text-align:center;font-size:20px;color:white;font-weight:bold;">
 		<img id="signature" src="pictures/signature.png" style="display:none;z-index:500;position:absolute;left:435px;top:190px;" />
@@ -150,7 +150,7 @@
 		<div id="accueil" class="<? if($page == "accueil"){ ?>article_actif<? } ?>">
 			<img alt="Rallye d'hiver 2012" src="pictures/accueil.png" />
 			<div class="inside-text">
-					Bienvenue <? if($login){if(isset($row['nom'])){echo $row['nom'].' ';}elseif(isset($_COOKIE["_nom_equipe"])){echo $_COOKIE["_nom_equipe"].' ';}} ?>! 					
+					Bienvenue ! 					
 					Sur ce site, vous pouvez à tout moment consulter les énigmes, les informations importantes et venir débloquer les questionnaires. &Agrave; vous de jouer ! Que souhaitez-vous faire ?<br/><br/>
 					
 					<table style="margin:0px auto 0px auto;text-align:justify;font-size:16px;" cellpadding="<? if($login){ ?>10<? }else{ ?>20<? } ?>">

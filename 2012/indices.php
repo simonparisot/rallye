@@ -10,8 +10,7 @@
 
 if(isset($_GET['bob'])){
 
-	$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
-	
+	require_once 'db.php';	
 
 ?>
 		
@@ -31,9 +30,9 @@ if(isset($_GET['bob'])){
 <? 
 			
 	if( isset($_POST['equipe']) && isset($_POST['nb']) && $_POST['equipe'] != ''){
-		$store = mysqli_query($link, "UPDATE  `Comptes_Utilisateurs` SET  `indices` =  '".$_POST['nb']."' WHERE `nom` LIKE '%".$_POST['equipe']."%'");
+		$store = mysqli_query($link, "UPDATE  `comptes_utilisateurs` SET  `indices` =  '".$_POST['nb']."' WHERE `nom` LIKE '%".$_POST['equipe']."%'");
 		if($store){
-			$res = mysqli_query($link, "SELECT `nom` FROM `Comptes_Utilisateurs` WHERE `nom` LIKE '%".$_POST['equipe']."%' AND `indices` = '".$_POST['nb']."'");
+			$res = mysqli_query($link, "SELECT `nom` FROM `comptes_utilisateurs` WHERE `nom` LIKE '%".$_POST['equipe']."%' AND `indices` = '".$_POST['nb']."'");
 			$nb = mysqli_num_rows($res);
 			for($i = 0; $i < $nb; $i++){
 				$select = mysqli_fetch_array($res);
@@ -53,7 +52,7 @@ if(isset($_GET['bob'])){
 		<ul>
 <?
 
-	$res = mysqli_query($link, "SELECT `nom`,`indices` FROM `Comptes_Utilisateurs` WHERE `indices` != '0' ORDER BY  `nom` ASC");
+	$res = mysqli_query($link, "SELECT `nom`,`indices` FROM `comptes_utilisateurs` WHERE `indices` != '0' ORDER BY  `nom` ASC");
 	if(!$res)createLog(mysqli_error($link));
 	$nb = mysqli_num_rows($res);
 	$count = 0;

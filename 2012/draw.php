@@ -1,7 +1,6 @@
 <?php
 
-$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
-
+require_once 'db.php';
 
 $res = mysqli_query($link, "SELECT *  
 					FROM `log` 
@@ -14,7 +13,7 @@ $res2 = mysqli_query($link, "SELECT *
 					GROUP BY `log`.`mdp`, `log`.`enigme`, `log`.`ok` 
 					ORDER BY  `log`.`date` ASC");
 $res3 = mysqli_query($link, "SELECT questionnaire, bonus 
-					FROM `Comptes_Utilisateurs` 
+					FROM `comptes_utilisateurs` 
 					WHERE `nom` LIKE '%".$_GET['e']."%'");
 	
 if($res && mysqli_num_rows($res) !=0){

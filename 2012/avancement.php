@@ -11,15 +11,15 @@ $enigmes = array(	"La Visite amusee",			"Les Bottes de chef-lieu",			"Strasbourg
 $avancement = array();
 $stat = array(0, 0, 0);
 /*$res = mysqli_query($link, "SELECT nom, login, questionnaire, bonus, indices, upload 
-					FROM `Comptes_Utilisateurs` 
+					FROM `comptes_utilisateurs` 
 					WHERE id != 1 AND id != 2 AND id != 8 AND id != 33 AND id != 47 AND id != 23 AND id != 30 AND id != 14 AND id != 51 AND id != 43  AND id != 49 AND id != 22  AND id != 28  AND id != 10 AND id != 54 AND id != 7
 ");*/
 $res = mysqli_query($link, "SELECT nom, login, questionnaire, bonus, indices, upload 
-					FROM `Comptes_Utilisateurs` 
+					FROM `comptes_utilisateurs` 
 					WHERE id = 3 OR id = 4
 ");
 /*$res = mysqli_query($link, "SELECT nom, login, questionnaire, bonus, indices, upload 
-					FROM `Comptes_Utilisateurs` 
+					FROM `comptes_utilisateurs` 
 					WHERE id != 1 AND id != 2 AND id != 8 AND id != 33 AND id != 47
 ");*/
 $nb = mysqli_num_rows($res);
@@ -138,11 +138,11 @@ for($i = 0; $i < $nb; $i++){
 // Calcul des stats
 	//équipes actives
 /*	$res = mysqli_query($link, "SELECT COUNT(DISTINCT `guess`) AS nb 
-						FROM `Comptes_Utilisateurs` 
+						FROM `comptes_utilisateurs` 
 						WHERE (`guess` != 'a:0:{}' AND id != 1 AND id != 2 AND id != 8 AND id != 33 AND id != 47 AND id != 23 AND id != 30 AND id != 14 AND id != 51 AND id != 43  AND id != 49 AND id != 22  AND id != 28  AND id != 10 AND id != 54 AND id != 7)");
 */
 	$res = mysqli_query($link, "SELECT COUNT(DISTINCT `guess`) AS nb 
-						FROM `Comptes_Utilisateurs` 
+						FROM `comptes_utilisateurs` 
 						WHERE (`guess` != 'a:0:{}' AND id != 1 AND id != 2 AND id != 8 AND id != 33 AND id != 47)");
 	$element = mysqli_fetch_array($res);
 	$stat[1] = $element['nb'];

@@ -1,5 +1,7 @@
 <?php
 
+
+
 // necessite un variable GET pour fonctionner, histoire que tout le monde ne vienne pas mettre son nez dedans !!
 if(isset($_GET['nimda'])){
 
@@ -7,14 +9,13 @@ if(isset($_GET['nimda'])){
 	if(isset($_GET['verbose'])){$v = true;}else{$v = false;}
 	
 	//connection à la BDD
-	$link = mysqli_connect("127.0.0.1:3306", "root", "dLPqYp7C7vTp", "rallyehiver2012");
-	
+	require_once 'db.php';	
 	
 
 	// Récupération du nombre d'énigme débloquées pour chaque équipe
 	// ------------------------------------------------------------
 	$res = mysqli_query($link, "SELECT nom, questionnaire 
-						FROM `Comptes_Utilisateurs` 
+						FROM `comptes_utilisateurs` 
 						WHERE id != 1 AND id != 2 AND id != 8 AND id != 33 AND id != 47 AND id != 23 AND id != 30 AND id != 14 AND id != 51 AND id != 43  AND id != 49 AND id != 22  AND id != 28  AND id != 10 AND id != 54 AND id != 7
 	");
 	$nb_equipe = mysqli_num_rows($res);
@@ -182,7 +183,7 @@ if(isset($_GET['nimda'])){
 	
 	}
 	
-	$res = mysqli_query($link, "SELECT `nom`, `indices` FROM `Comptes_Utilisateurs` WHERE `indices`=(SELECT MAX(`indices`) FROM `Comptes_Utilisateurs`)");
+	$res = mysqli_query($link, "SELECT `nom`, `indices` FROM `comptes_utilisateurs` WHERE `indices`=(SELECT MAX(`indices`) FROM `comptes_utilisateurs`)");
 	if(!$res) echo mysqli_error($link);
 	$nb = mysqli_num_rows($res);
 	for($i = 0; $i < $nb; $i++){

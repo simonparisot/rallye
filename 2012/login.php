@@ -8,13 +8,11 @@
  *
  * ------------------------------------------------------------------- */
 
+// Définition du temps d'expiration des cookies
 $expiration = time() + (3*30*24*60*60);
-$login = false;
-$page = 'accueil';
-
+$login = false; // variable globale utilisée pour savoir si l'utilisateur est authentifié
 ini_set('session.gc_maxlifetime', 7200);
 session_start();
-$auth = false; // variable globale utilisée pour savoir si l'utilisateur est authentifié
 
 
 // --------------------------------------------------------------------
@@ -23,17 +21,100 @@ $auth = false; // variable globale utilisée pour savoir si l'utilisateur est au
 if( isset($_GET['disconnect']) ) {
 
 	setcookie('auth', "", -1, '/', '.rallyehiver.fr', 1);
+	setcookie('_id_equipe', "", -1);
+	setcookie('_nom_equipe', "", -1);
 	session_destroy();
-	header('location: '.$_SERVER['PHP_SELF']);
-	$sth = $bdd->prepare('INSERT INTO rallye_log (ip, equipe, log) VALUES (:ip, :equipe, :log)');
-	$sth->execute(array(':ip' => $_SERVER["REMOTE_ADDR"], ':equipe' => $_SESSION['nom'], ':log' => "Disconnected"));
-	exit;
+	$page = 'connexion';
 
 
 // --------------------------------------------------------------------
 // L'utilisateur veut se connecter
 
 }elseif( isset($_POST['login']) && isset($_POST['pwd']) ) {
+	
+	// par défault, redirection vers la page de connexion (si le login fail)
+	$page = 'connexion';
+					
+	// Vérification de la validité des champs
+	if(!preg_match("@^[A-Za-z0-9_]{2,1000}$@", $_POST["login"]))
+	{
+	   $message = "<font color=orange>Votre nom d'utilisateur doit comporter entre 2 et 30 caract&egrave;res<br />\n";
+	   $message .= "Il vous a &eacute;t&eacute; donn&eacute; par l'&eacute;quipe organisatrice.</font>";
+	}
+	else
+	{
+		
+		require_once 'db.php';
+		
+		// Récupération des infos de la BDD
+		$result = mysqli_query($link, "	SELECT *
+								FROM rallyecommon.users
+								WHERE login = '" . $_POST["login"] . "'
+		");
+		
+		// Si une erreur survient
+		if(!$result)
+		{
+			$message = "Une erreur est survenue lors de la tentative de connexion BDD : ". mysqli_error($link);
+		}
+		else
+		{
+			// Si aucun utilisateur n'a été trouvé
+			if(mysqli_num_rows($result) == 0)
+			{
+				 $message = "<font color=orange>D&eacute;sol&eacute;, le nom d'utilisateur " . $_POST["login"] . " n'existe pas.</font>";
+			}
+			else
+			{
+				// Récupération des données
+				$row = mysqli_fetch_array($result);
+
+				// Vérification du mot de passe
+				if ( password_verify($_POST['pwd'], $row["password"]) ) { 
+				{
+					// Création des cookies
+					setcookie("_nom_equipe", $row["nom"], $expiration);
+					setcookie("_id_equipe", $row["id"], $expiration);
+
+					// récupération de l'id du visiteur qui se connecte
+					$login = $row["id"];
+					
+					// redirection vers la page par défaut
+					if($login==1){	$page = 'perso';	}else{	$page = 'accueil';	}
+					
+					// récupération des questionnaires débloqués
+					$res = mysqli_query($link, "SELECT questionnaire, bonus, upload, indices
+										FROM `comptes_utilisateurs`
+										WHERE id = ".$row["id"]);
+					$element = mysqli_fetch_array($res);
+					$data = unserialize($element['questionnaire']);
+					$indices = $element['indices'];
+					$dossierOK = $element['upload'];
+					echo $dossierOK;
+					$bonus = $element['bonus'];
+					if($bonus%5 == 0)$bonusLoc = 'opus_diner_1_46ef5.pdf';
+					if($bonus%5 == 1)$bonusLoc = 'opus_diner_2_ek53r.pdf';
+					if($bonus%5 == 2)$bonusLoc = 'opus_diner_3_g75h6.pdf';
+					if($bonus%5 == 3)$bonusLoc = 'opus_diner_4_cr6i5.pdf';
+					if($bonus%5 == 4)$bonusLoc = 'opus_diner_5_k8fh7.pdf';
+					
+					if($login == 1){include 'avancement.php';}
+				}
+				else
+				{
+					$message = "<font color=orange>Votre mot de passe est incorrect.</font>";
+				}
+			}
+		} 
+	}
+
+	// Fermeture de la connexion à la base de données
+	if(isset($link))mysqli_close($link);
+
+
+// -------------------------------------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------------------------
 
 	$loginfailed = "Nom d'équipe ou mot de passe incorrect";
 	$sth = $bdd->prepare('SELECT * FROM rallyecommon.users WHERE login = :login LIMIT 1');

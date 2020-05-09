@@ -1,23 +1,23 @@
 <div class="enigme-header">
 	
 	<a class="tooltip" href="#" onclick="window.location = 'controllers/download.php?enigme=' + active();return false;">
-		<img class="headerbutton" src="ressources/img/headerbutton1">
+		<img class="headerbutton" src="ressources/img/headerbutton1.png">
 		<span><img class="callout" src="ressources/img/callout.gif">Télécharger cette énigme</span>
 	</a>
 
 	<a class="tooltip discussButton" href="#" onclick="discussion(this);return false;">
-		<img class="headerbutton" src="ressources/img/headerbutton4">
+		<img class="headerbutton" src="ressources/img/headerbutton4.png">
 		<span><img class="callout" src="ressources/img/callout.gif">Discuter de cette énigme avec votre équipe</span>
 		<div id="comCount"></div>
 	</a>
 
 	<a class="tooltip indiceMailto" href="">
-		<img class="headerbutton" src="ressources/img/headerbutton3" class="help_item">
+		<img class="headerbutton" src="ressources/img/headerbutton3.png" class="help_item">
 		<span><img class="callout" src="ressources/img/callout.gif">Demander un indice aux organisateurs</span>
 	</a>
 
 	<a class="tooltip" href="#" onclick="help();return false;">
-		<img class="headerbutton" src="ressources/img/headerbutton5">
+		<img class="headerbutton" src="ressources/img/headerbutton5.png">
 		<span><img class="callout" src="ressources/img/callout.gif">Aide : comment utiliser cette page</span>
 	</a>
 
