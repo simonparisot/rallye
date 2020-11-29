@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.7e1fcd03.chunk.css",
-    "main.js": "/static/js/main.a12f350f.chunk.js",
-    "main.js.map": "/static/js/main.a12f350f.chunk.js.map",
+    "main.js": "/static/js/main.b8a96e9e.chunk.js",
+    "main.js.map": "/static/js/main.b8a96e9e.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.fe8819d3.js",
     "runtime-main.js.map": "/static/js/runtime-main.fe8819d3.js.map",
-    "static/js/2.ff3a86d4.chunk.js": "/static/js/2.ff3a86d4.chunk.js",
-    "static/js/2.ff3a86d4.chunk.js.map": "/static/js/2.ff3a86d4.chunk.js.map",
+    "static/js/2.0aad15d5.chunk.js": "/static/js/2.0aad15d5.chunk.js",
+    "static/js/2.0aad15d5.chunk.js.map": "/static/js/2.0aad15d5.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.14988070b9cc09a311fee763fc7bc4a0.js": "/precache-manifest.14988070b9cc09a311fee763fc7bc4a0.js",
+    "precache-manifest.66781fe40cfe3d91c1d42880352738f3.js": "/precache-manifest.66781fe40cfe3d91c1d42880352738f3.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.7e1fcd03.chunk.css.map": "/static/css/main.7e1fcd03.chunk.css.map",
-    "static/js/2.ff3a86d4.chunk.js.LICENSE.txt": "/static/js/2.ff3a86d4.chunk.js.LICENSE.txt",
+    "static/js/2.0aad15d5.chunk.js.LICENSE.txt": "/static/js/2.0aad15d5.chunk.js.LICENSE.txt",
     "static/media/rallye2012.jpg": "/static/media/rallye2012.e2d22abd.jpg",
     "static/media/rallye2013.jpg": "/static/media/rallye2013.5253ec6c.jpg",
     "static/media/rallye2014.jpg": "/static/media/rallye2014.4fdcb509.jpg",
@@ -25,8 +25,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.fe8819d3.js",
-    "static/js/2.ff3a86d4.chunk.js",
+    "static/js/2.0aad15d5.chunk.js",
     "static/css/main.7e1fcd03.chunk.css",
-    "static/js/main.a12f350f.chunk.js"
+    "static/js/main.b8a96e9e.chunk.js"
   ]
 }

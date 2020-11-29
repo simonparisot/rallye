@@ -1,7 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import YearEdition from "./YearEdition";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+//import { NavLink } from "react-router-dom";
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Editions = () => (
 	<div>
@@ -21,9 +21,9 @@ export const Editions = () => (
 
 		</section>
 		
-		<nav>
+		{/*<nav>
 			<NavLink to="/"> <button> <FontAwesomeIcon icon="arrow-left" /> Retour</button> 			</NavLink>
-		</nav>
+		</nav>*/}
     </div>
 );
 
