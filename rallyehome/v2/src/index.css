@@ -1,6 +1,13 @@
 @import-normalize;
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto:wght@300;400&display=swap");
 
+/* trick pour obfusquer tant que possible l'email de contact */
+.e-mail:before {
+  content: "\0068\0065\006c\006c\006f\0040\0072\0061\006c\006c\0079\0065\0068\0069\0076\0065\0072\002e\0066\0072";
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
 html { font-size: 62.5%; }
 
 body {
@@ -45,13 +52,14 @@ a {
 
 button { 
   border: none;
-  padding: 8px 15px;
+  padding: 14px 18px;
   margin-right: 20px;
   min-width: 180px;
   font-size: 1.8rem;
   font-family: "Abril Fatface", cursive, sans-serif;
   background-color: #fff000;
   cursor: pointer;
+  border-radius: 5px;
 }
 button:hover { box-shadow: 0 0 5px #fff000; }
 button svg { margin-right: 10px; }

@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f47a9d963a1e82bc9442dc81c1d01e42",
+    "revision": "6d97afd89eca455e703236f956700f79",
     "url": "/index.html"
   },
   {
-    "revision": "561a3cb98f71d5276650",
-    "url": "/static/css/main.7e1fcd03.chunk.css"
+    "revision": "695724078074dba49d07",
+    "url": "/static/css/main.bef4cf6f.chunk.css"
   },
   {
-    "revision": "903bb385ca74aaf1dbf5",
-    "url": "/static/js/2.0aad15d5.chunk.js"
+    "revision": "148dba9ea850b5779754",
+    "url": "/static/js/2.1cffa804.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/static/js/2.0aad15d5.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.1cffa804.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "561a3cb98f71d5276650",
-    "url": "/static/js/main.b8a96e9e.chunk.js"
+    "revision": "695724078074dba49d07",
+    "url": "/static/js/main.07970af8.chunk.js"
   },
   {
     "revision": "1e430c8e34d4ca642379",
@@ -58,6 +58,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "fb738c334c694b32d05d6887bd0037fc",
     "url": "/static/media/rallye2020.fb738c33.jpg"
+  },
+  {
+    "revision": "f7f1fe72ea7bac55586b22312bc2adc0",
+    "url": "/static/media/rallye2021.f7f1fe72.jpg"
+  },
+  {
+    "revision": "19083810b7c28c33d8e2782b3b25a238",
+    "url": "/static/media/rallye2022.19083810.jpg"
   },
   {
     "revision": "e123f89d5796ac8d937b3da7dc4e5852",

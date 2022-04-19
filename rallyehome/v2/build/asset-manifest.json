@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.7e1fcd03.chunk.css",
-    "main.js": "/static/js/main.b8a96e9e.chunk.js",
-    "main.js.map": "/static/js/main.b8a96e9e.chunk.js.map",
+    "main.css": "/static/css/main.bef4cf6f.chunk.css",
+    "main.js": "/static/js/main.07970af8.chunk.js",
+    "main.js.map": "/static/js/main.07970af8.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.fe8819d3.js",
     "runtime-main.js.map": "/static/js/runtime-main.fe8819d3.js.map",
-    "static/js/2.0aad15d5.chunk.js": "/static/js/2.0aad15d5.chunk.js",
-    "static/js/2.0aad15d5.chunk.js.map": "/static/js/2.0aad15d5.chunk.js.map",
+    "static/js/2.1cffa804.chunk.js": "/static/js/2.1cffa804.chunk.js",
+    "static/js/2.1cffa804.chunk.js.map": "/static/js/2.1cffa804.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.66781fe40cfe3d91c1d42880352738f3.js": "/precache-manifest.66781fe40cfe3d91c1d42880352738f3.js",
+    "precache-manifest.874574e5b9133b325a77234ab23cae5c.js": "/precache-manifest.874574e5b9133b325a77234ab23cae5c.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.7e1fcd03.chunk.css.map": "/static/css/main.7e1fcd03.chunk.css.map",
-    "static/js/2.0aad15d5.chunk.js.LICENSE.txt": "/static/js/2.0aad15d5.chunk.js.LICENSE.txt",
+    "static/css/main.bef4cf6f.chunk.css.map": "/static/css/main.bef4cf6f.chunk.css.map",
+    "static/js/2.1cffa804.chunk.js.LICENSE.txt": "/static/js/2.1cffa804.chunk.js.LICENSE.txt",
     "static/media/rallye2012.jpg": "/static/media/rallye2012.e2d22abd.jpg",
     "static/media/rallye2013.jpg": "/static/media/rallye2013.5253ec6c.jpg",
     "static/media/rallye2014.jpg": "/static/media/rallye2014.4fdcb509.jpg",
@@ -21,12 +21,14 @@
     "static/media/rallye2018.jpg": "/static/media/rallye2018.4fdcb509.jpg",
     "static/media/rallye2019.jpg": "/static/media/rallye2019.3ad16e52.jpg",
     "static/media/rallye2020.jpg": "/static/media/rallye2020.fb738c33.jpg",
+    "static/media/rallye2021.jpg": "/static/media/rallye2021.f7f1fe72.jpg",
+    "static/media/rallye2022.jpg": "/static/media/rallye2022.19083810.jpg",
     "static/media/index.css": "/static/media/tristan-colangelo-d4OnMIl5OYk-unsplash.e123f89d.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.fe8819d3.js",
-    "static/js/2.0aad15d5.chunk.js",
-    "static/css/main.7e1fcd03.chunk.css",
-    "static/js/main.b8a96e9e.chunk.js"
+    "static/js/2.1cffa804.chunk.js",
+    "static/css/main.bef4cf6f.chunk.css",
+    "static/js/main.07970af8.chunk.js"
   ]
 }

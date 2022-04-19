@@ -1,7 +1,7 @@
 import React from "react";
 import YearEdition from "./YearEdition";
-//import { NavLink } from "react-router-dom";
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Editions = () => (
 	<div>
@@ -9,6 +9,8 @@ export const Editions = () => (
 		
 		<section>
 			
+			<YearEdition year="2022" theme="Jardins et oiseaux" url="https://rallyehiver2022.fr/?code=spzowsqj" />
+			<YearEdition year="2021" theme="Les méchants" url="" />
 			<YearEdition year="2020" theme="Le temps" url="https://2020.rallyehiver.fr" />
 			<YearEdition year="2019" theme="Les jeux" url="https://2019.rallyehiver.fr" />
 			<YearEdition year="2018" theme="Les romans" url="" />
@@ -21,9 +23,9 @@ export const Editions = () => (
 
 		</section>
 		
-		{/*<nav>
+		<nav>
 			<NavLink to="/"> <button> <FontAwesomeIcon icon="arrow-left" /> Retour</button> 			</NavLink>
-		</nav>*/}
+		</nav>
     </div>
 );
 
