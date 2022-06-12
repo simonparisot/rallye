@@ -6,6 +6,7 @@ body { background: #000 url("img/waldo.jpg") no-repeat fixed center/cover; paddi
 #container { overflow: hidden; }
 #iewarning { width: 100%; text-align: center; background-color: red; padding: 8px; }
 #authform { width: 215px; margin: 0 auto; }
+#authform input { width: inherit; box-sizing: border-box; }
 #loginfailed { margin-bottom: 15px; color: red; }
 .fas, .far, .fab { font-size: 1.5rem; letter-spacing: 0.6rem; vertical-align: middle; }
 

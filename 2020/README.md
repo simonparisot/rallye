@@ -13,4 +13,4 @@ C'était le premier rallye où le site a été mis à disposition d'une équipe 
 
 * Grosses modifications sur le process de vérification de mot de passe, pour les deux points précédents
 
-* les mots de passe des énigmes et parcours sont stockés hashés, pour m'éviter de les connaître 
+* les réponses des énigmes et parcours sont stockés hashés, pour m'éviter de les connaître 

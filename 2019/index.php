@@ -94,9 +94,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin']) {
 					include 'views/team-content.php';
 				}
 			}else{ 
-				echo '<form id="authform" action="?" method="post">';
 				include 'views/loginform.php';
-				echo '</form>';
 			}
 			?>
 		</div>

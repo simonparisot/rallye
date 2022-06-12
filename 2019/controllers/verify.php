@@ -69,8 +69,13 @@ if(isset($_GET['enigme']) && isset($_GET['mdp'])) {
                 $enigmes = json_decode($result[0]['enigmes'], true);
                 $quest = json_decode($result[0]['quest'], true);
 
+                // si on est en accès anonyme, on n'enregistre rien
+                if ($_SESSION['login'] == "anonymous") {
+                    $texte = 'Félicitation ! C\'est la bonne réponse.';
+                    $d = array('ok' => true, 'texte' => $texte, 'newEni' => $newEni, 'newQuest' => $newQuest) ;
+
                 // si c'est la première fois que cette énigme est résolue
-                if (!isset($enigmes[$enigme])) {
+                }elseif (!isset($enigmes[$enigme])) {
 
                     // on update la liste des énigmes résolues par l'équipe
                     $enigmes[$enigme] = time();
