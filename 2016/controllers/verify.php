@@ -75,8 +75,10 @@ if(isset($_GET['enigme']) && isset($_GET['mdp'])) {
                     $texte = 'Bonne réponse ! '.$specialComment.'Cette énigme débloque le questionnaire "'.$enigmeList[$enigme-1][1] .'", que vous avez déjà.';
                 }
 
-                // on update la liste des énigmes résolues par l'équipe
-                if (!isset($enigmes[$enigme])) {
+                // on update la liste des énigmes résolues par l'équipe (sauf si c'est un accès anonyme)
+                if ($_SESSION['login'] == "anonymous") {
+                    $texte = 'Félicitation ! C\'est la bonne réponse.';
+                }elseif (!isset($enigmes[$enigme])) {
                     $enigmes[$enigme] = time();
                     $storeE->execute(array(':enigmes' => json_encode($enigmes), ':login' => $_SESSION['login']));
                     $newEni=true;

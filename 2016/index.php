@@ -64,9 +64,7 @@ require_once 'controllers/login.php';
 			<?
 			if($auth) { include $_SESSION['admin'] ? 'views/admin45362938/page-template.php' : 'views/team-content.php';
 			}else{ 
-				echo '<form id="authform" action="?" method="post">';
 				include 'views/loginform.php';
-				echo '</form>';
 			}
 			?>
 		</div>

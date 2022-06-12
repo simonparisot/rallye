@@ -29,6 +29,7 @@ body { background: #df5537 url("img/bg.png") repeat; padding: 0; margin: 0; font
 #container { overflow: hidden; }
 #iewarning { width: 100%; text-align: center; background-color: red; padding: 8px; }
 #authform { width: 215px; margin: 0 auto; }
+#authform input { width: inherit; box-sizing: border-box; }
 #loginfailed { margin-bottom: 15px; color: red; }
 #popin { text-align: left; width: 40%; margin: 20vh auto; background-color: rgba(54, 41, 46, 0.8); color: #ffffff; padding:50px 40px; border-radius: 20px; }
 
