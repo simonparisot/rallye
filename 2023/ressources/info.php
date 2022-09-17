@@ -11,7 +11,7 @@ $rallyeContent = array (
     "E07FfqM7BBd" => array(  "Qui a le temps ?",                            true,       '$2y$10$JHx3DelnZi9M35luk/./WurSSl0G2MK142x0ETYV7.Utm1Hay27vm'),    
     "E08wwTmEyCw" => array(  "Conjugaisons",                                true,       '$2y$10$tDZ7nYD7meQBqkQTmgwQ7.pLEW6VyTVQU1JCTzLwJ20K/b/k/5PJS'),    
     "E09jt79wRSM" => array(  "Codons",                                      true,       '$2y$10$RFIowHbnluxT.FXyk5Hkzuwf8o0upSjLQtC41jhIpjEh8kjPLpCxK'),
-    "E10KYLyUhGY" => array(  "Le sucre est dangereux pour les dents",       true,       '$2y$10$8IDhPhzRLF6t54KDXm3CDe8yBKv5wYLlNsgQq9wWIkfyhhi8vEqYy'),        
+    "E10KYLyUhGY" => array(  "Le sucre est dangereux",                      true,       '$2y$10$8IDhPhzRLF6t54KDXm3CDe8yBKv5wYLlNsgQq9wWIkfyhhi8vEqYy'),        
     "E11YcdRWwzc" => array(  "La clepsydre",                                true,       '$2y$10$wVH/8oCsCHz1ZGQrsse4JuitaWzasbsmGsXteuGS.eGx3ovL3wqOy'),    
     "E12mSedBRcj" => array(  "Couleur Café",                                true,       '$2y$10$kSEEawYAFd07QDHacFmFyeiGyIB3wHG5h/kxD7AbBbRDcOa5l4jky'),
     "E13D8jf7Uts" => array(  "Thème du cinq économe",                       true,       '$2y$10$72rHgMnTaTMW3mxeZJUEIOO3A2fDyOmcSKo4UZEnE2kW.OVybWaI.'),       
@@ -22,21 +22,16 @@ $rallyeContent = array (
     "E18NNjPUs3K" => array(  "Flâneries",                                   true,       '$2y$10$aOv97J17k54FTQ/duKAceOHDDLuaZTS2VQg7/lA2qOsVijbxeZuuq'), 
     "E19EKsmu647" => array(  "Ragtime",                                     true,       '$2y$10$vhR3z4vPxzLl4X7tfvVuTO1ahVGM50izb/7uYToBlz6dM7RQtGS56'), 
     "E20RZcq4LqZ" => array(  "La 20e énigme",                               true,       '$2y$10$Fl/o20MN1wX0cXikljxFw.4EUUQrQTMVK00Msi7EZHfM97gMvqyjy'), 
-    "E21fh74gZx9" => array(  "Enigme finale",                               true,       '$2y$10$AvG.iAyUkw9jNfaCvgsE3usreT.z3e50ltuDt1p50HEg3iCuPbikq'), 
 
-    "P00wiG7d67n" => array(  "Prologue",                                    true,       '$2y$10$6xfk4mlgCW/5i5bmmbuu3uhpLKsXpVL5OcZXysUlsjw1yGgqDwAL.',     "QUESTION"),    
     "P01SBCdwwqc" => array(  "De l'air et de la lumière",                   true,       '$2y$10$s/L87aJOrHZUOnvJdq9a2uzRihLN7ucu.qJnO3m3Cz.3n2jzWlYQu',     "BEAU"),    
     "P02PdMmYs2z" => array(  "L'âge des pierres",                           true,       '$2y$10$fhW3kc282KuMucl473bpIeAfo2EX.Zr3NuEWwiR/ddkMhItkf8iIe',     "CONDUIT"),    
     "P03m8YQAq6p" => array(  "Etudions",                                    true,       '$2y$10$roGfqsjQhs9nzQXIBtK3r.Jq.w4gjxRPEGWdSlxb2aNCq.cZ0zy9W',     "CONVENTION"),        
-    "P04LzuBEawE" => array(  "On ne fait pas d'omelette...",                true,       '$2y$10$Kw6KKT8jbxa6WxRTIm6fR.2yFwoArHA5jbe/4p7Xnslz2eVHLCofq',     "PEUPLES"),    
-    "P05EubtHzh4" => array(  "De NIer à NIII, quand les empereurs érigent", true,       '$2y$10$4ahj1aeb3Xgo3Z0VzakGGOD4VLuvP2mMvW0LE7LiU9p/yyOyxJE6O',     "RIVES"),         
+    "P04LzuBEawE" => array(  "On ne fait pas d'omelette",                   true,       '$2y$10$Kw6KKT8jbxa6WxRTIm6fR.2yFwoArHA5jbe/4p7Xnslz2eVHLCofq',     "PEUPLES"),    
+    "P05EubtHzh4" => array(  "Quand les empereurs érigent",                 true,       '$2y$10$4ahj1aeb3Xgo3Z0VzakGGOD4VLuvP2mMvW0LE7LiU9p/yyOyxJE6O',     "RIVES"),         
     "P06T2VxsxKk" => array(  "Le toit de notre monde",                      true,       '$2y$10$GYFSW12icqeLt77CzuhZXOUvPs58qXP/jYfZGLP.1/HpZyqh.LQge',     "GARE"),
     "P07Q6AfQt7A" => array(  "Une histoire de places",                      true,       '$2y$10$/Whu.1SBPbdG93dhnhM5BOM5kbvf6CQfOccAzgxlg4yzDqQ0hvh1W',     "LIGNES"),    
     "P08NFeWKhZb" => array(  "Voies royales",                               true,       '$2y$10$/34nQ22cNyVND5l4F0DrdeknqXa/wM0CNhBt8zUM/pzTjl8R1inNq',     "DANUBE"),    
-    "P09RKJPrLcH" => array(  "La place des arts",                           true,       '$2y$10$Ayg7mlkbhWAeIH2azfVn8.lmejTAYENMsIijv/IHq0wHQarS8.v/q',     "CONCORDE"),
-    "P10xtdwXzHF" => array(  "Votre modernité est notre modernité",         true,       '$2y$10$7wCrW0TQVlTofsfzA/Tyb.v.3UG8dpr2xGPXMcIB9LjgTBM6nq8ci',     "QUAI"),        
-    "P11s2wzbJRN" => array(  "Bon retour Monsieur Haussmann (épilogue)",    true,       '$2y$10$oOXw06RZY3vKN1mG8LoBMO6eONrPgbpeeirungOPPccpfQezM.XVO'),              
-    "PBONUSBONUS" => array(  "Bonus",                                       true),              
+    "P09RKJPrLcH" => array(  "La place des arts",                           true,       '$2y$10$Ayg7mlkbhWAeIH2azfVn8.lmejTAYENMsIijv/IHq0wHQarS8.v/q',     "CONCORDE")      
 );
 
 // liste des réponses pré-enregistrées pour certains mauvais mots de passe

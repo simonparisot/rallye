@@ -14,11 +14,5 @@
 		<input name="submit" type="submit" value="Se connecter" class="btn" />
 	</div>
 
-	<p>
-		Les organisateurs de ce rallye n'autorisent malheureusement pas l'accès public à son contenu.<br> 
-		Si vous n'étiez pas inscrits lors de ce rallye, d'autres organisateurs diffusent publiquement et gratuitement leurs rallyes : <br>
-		<a href="https://2019.rallyehiver.fr"><u>l'édition 2019</u></a>, <a href="https://2016.rallyehiver.fr"><u>2016</u></a> et <a href="https://2019.rallyehiver.fr"><u>2012</u></a>.
-	</p>
-
 </form>
 

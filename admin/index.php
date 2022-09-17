@@ -43,7 +43,7 @@ require_once 'ressources/info.php';
 
 <body>
 
-	<img id="logo" src="ressources/img/logo.png" />
+	<img id="logo" src="ressources/img/logo2.png" />
 
 	<div class="content">
 		

@@ -10,8 +10,7 @@ a { outline: none; text-decoration: none; color:inherit; -webkit-appearance: non
 img { border:none; outline: none; }
 html { font-size: 100%; } 
 body {
-	/*background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), #000 url("img/background.jpg") center/cover no-repeat fixed;*/
-  background: #000 url("img/background.jpg") center/cover no-repeat fixed;
+  background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),#000 url(img/tristan-colangelo-d4OnMIl5OYk-unsplash.jpg) 50%/cover no-repeat fixed;
 	padding: 0; 
 	margin: 0; 
 	font-family: 'Open sans', sans-serif; 
@@ -113,7 +112,7 @@ input {
 #logo { 
   position: fixed;
   top:30px; right:30px;
-  width: 260px; 
+  width: 200px; 
 }
 
 .john-content h1 { color: #222; font-size: 40px; font-family: "EB Garamond", serif; font-weight: 800; margin-bottom: 60px;  }

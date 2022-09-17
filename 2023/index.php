@@ -15,7 +15,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin']) {
 
 <head>
 
-	<title>Rallye d'Hiver 2020</title>
+	<title>Rallye d'Hiver 2023</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, height=device-height,  initial-scale=1.0"/>
 
@@ -31,7 +31,9 @@ if (isset($_SESSION['admin']) && $_SESSION['admin']) {
 
 	<link type="text/css" rel="stylesheet" href="ressources/style.css?<?= filemtime('ressources/style.css'); ?>" />
 	<link type="text/css" rel="stylesheet" href="ressources/style-mobile.css?<?= filemtime('ressources/style-mobile.css'); ?>" />
-	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Roboto:400,700&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Permanent+Marker&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	
 	<script src="ressources/jquery-1.11.2.min.js"></script>
@@ -70,7 +72,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin']) {
 if ($auth): ?>
 
 	<div class="logoheader">
-		<img class="logo" src="ressources/img/logo.png" />
+		<img class="logo" src="ressources/img/logo2.png" />
 	</div>
 
 	<div class="curtain white folded <?php if(!$auth){ echo 'fixed'; } ?>">
@@ -103,7 +105,7 @@ if ($auth): ?>
 else: ?>
 
 	<div class="logoheader">
-		<img class="logo biglogo" src="ressources/img/logo.png" />
+		<img class="logo biglogo" src="ressources/img/logo2.png" />
 	</div>
 
 	<div class="curtain grey folded">
@@ -111,7 +113,7 @@ else: ?>
 		<div class="main-content"><?php include 'views/loginform.php'; ?></div>
 	</div>
 
-	<div class="curtain purple folded">
+	<div class="curtain purple large folded">
 		<div class="title">Le Rallye d'Hiver</div>
 		<div class="main-content">
 			<div class="col-gauche"><?php include 'views/info.php'; ?></div>

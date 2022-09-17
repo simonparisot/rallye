@@ -4,7 +4,7 @@ Sites et apps du Rallye d'Hiver parisien : https://rallyehiver.fr
 
 ## Structure du repo
 
-* 2012, 2016, 2019, 2020 : différentes version du site du rallye (il y a une nouvelle édition par an)
+* 2012, 2016, 2019, ... : différentes version du site du rallye (il y a une nouvelle édition par an)
 
 * admin : app pour les organisateurs, pour le suivi de l'avancement des équipes
 
