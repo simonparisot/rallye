@@ -1,10 +1,8 @@
 <?php
-require_once 'ressources/info.php';
-require_once 'controllers/db.php';
-require_once 'controllers/login.php';
+require_once 'controllers/initialize.php';
 
 if (isset($_SESSION['admin']) && $_SESSION['admin']) {
-	header('Location: http://orga.rallyehiver.fr/');
+	header('Location: http://admin.rallyehiver.fr/');
 	exit();
 }
 

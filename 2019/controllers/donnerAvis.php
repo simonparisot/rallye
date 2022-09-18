@@ -3,8 +3,7 @@
 if ( isset($_POST['msg']) && $_POST['msg'] != '' ) {
 
 	echo 'inside';
-	require_once 'db.php';
-	require_once 'login.php';
+	require_once 'initialize.php';
 	if (!$auth) { echo json_encode(array('loginerror')); exit; }
 
 	

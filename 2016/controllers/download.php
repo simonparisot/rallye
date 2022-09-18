@@ -4,7 +4,7 @@
 // ---------------
 
 ob_start();
-require_once '../ressources/info.php';
+require_once 'initialize.php';
 
 // Si l'utilisateur veut télécharger une énigme
 if( isset($_GET['enigme']) ) {

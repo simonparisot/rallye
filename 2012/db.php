@@ -1,1 +1,1 @@
-<?php $link = mysqli_connect("127.0.0.1:3306", "root", "???????????", "rallyehiver2012"); ?>
+<?php $link = mysqli_connect("127.0.0.1:3306", "root", "DRhUEMRkh7eRSjHt", "rallyehiver2012"); ?>

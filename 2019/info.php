@@ -1,5 +1,7 @@
 <?php
 
+// configuration pour le rallye 2019 - Les jeux !
+
 $questList = array (
 	"gkehb0p5av" => "Passages",
 	"c12m85wqby" => "A la croisée des Jeux",

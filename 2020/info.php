@@ -1,5 +1,7 @@
 <?php
 
+// configuration pour le rallye 2020 - Le temps !
+
 $rallyeContent = array (
 //  CODE                    NOM                                             PUBLIÉ      MOT DE PASSE     
     "E01sNRdEvwG" => array(  "La croisée des chemins",                      true,       '$2y$10$G51uN2VbYmun2RGIDx6AXOhYq70fs1OKHLElnEVjm1AQRxrFC8zLm'),    

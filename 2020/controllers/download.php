@@ -7,7 +7,7 @@ ob_start();
 
 if( isset($_GET['code']) ) {
 
-	require_once '../ressources/info.php';
+	require_once 'initialize.php';
 	isset( $rallyeContent[$_GET['code']] )? $content = $rallyeContent[$_GET['code']] : exit;
 	$type = ($_GET['code'][0]=="E")? "Enigme":"Parcours";
 	$file = '../content/'.$_GET['code'].'.pdf';

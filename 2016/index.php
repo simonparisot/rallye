@@ -1,7 +1,5 @@
 <?php
-require_once 'ressources/info.php';
-require_once 'controllers/db.php';
-require_once 'controllers/login.php';
+require_once 'controllers/initialize.php';
 ?>
 
 <!DOCTYPE html>
