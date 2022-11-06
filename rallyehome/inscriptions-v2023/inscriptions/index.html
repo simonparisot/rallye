@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="UTF-8">
+	<title>Rallye d'Hiver 2023 - Paris</title>
+	<link rel="stylesheet" type="text/css" href="main-style.css?v=1.0.3">
+	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Roboto" rel="stylesheet">
+
+	<script src="https://js.stripe.com/v3/"></script>
+	<script src="payment.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62904031-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-62904031-1');
+	</script>
+
+	<script>
+        function load_content(id) {
+            document.getElementsByClassName("active")[0].classList.remove("active");
+            document.getElementById(id).classList.add("active");
+        }
+        function push(id) {
+            load_content(id);
+            window.history.pushState({id}, `${id}`,`/${id}`);
+        }
+        window.onload = event => {
+            const pathnameSplit = window.location.pathname.split("/");
+            const initialId = pathnameSplit.slice(1)!="" ? pathnameSplit.slice(1) : "intro";
+            load_content(initialId);
+            window.history.pushState({id:initialId}, `${initialId}`,``);
+        }
+        // Listen for PopStateEvent
+        // (Back or Forward buttons are clicked)
+        window.addEventListener("popstate", event => {
+            // Grab the history state id
+            let stateId = event.state.id;
+            load_content(stateId);
+        });
+    </script>
+
+
+</head>
+<body>
+
+	<header>
+	
+	</header>
+
+	<section id="intro" class="active">
+
+		<h1>Rallye d'Hiver 2023</h1>
+		<h2>Inscriptions ouvertes !</h2>
+
+		<!--div class="message">
+			Le rallye d'hiver est lancé depuis le 21 décembre 2018 !<br>
+			Si vous êtes déjà inscrits, rendez-vous sur <a href="https://rallyehiver.fr">rallyehiver.fr</a>.<br>
+			Sinon, rejoignez-nous au plus vite ! Toutes les infos sont ci-dessous.<br>
+			<span id="countdown">9 jours, 10 heures, 23 minute et 52 secondes</span><br>
+		</div-->
+
+		<div class="content-text">
+			<p style="display: inline-block; transform: rotate(180deg); line-height: 0;">Il existe, dans votre mémoire....</p>
+			<p>Un lieu où, dans l'ensemble, le cartésianisme a pu rendre l'imaginaire ordonnée (sauf dans le cercle polaire, souvenez-vous !...)</p>
+			<p>Où le cercle de vos amis est sans doute longtemps resté le centre de vos repères (et peut-être encore aujourd'hui)...</p>
+			<p>Et où vous rêviez d'une suite au cas de Dino (fantastique nouvelle !)</p>
+			<p>En somme, un lieu dont il n'appartient qu'à vous d'en conserver les bons souvenirs !</p>
+		</div>
+
+		<input type="button" value="S'inscrire" class="button signupbutton" onclick="push('signup'); return false;">
+		<input type="button" value="En savoir plus" class="button signupbutton" onclick="push('what'); return false;">
+
+	</section>
+
+	<section id="signup">
+
+		<h2>Les admissions sont ouvertes pour l'hiver 2023 !</h2>
+
+		<p class="content-text">
+			Pour participer au Rallye d'Hiver 2023, formez une équipe (habituellement de 2 à 6 personnes), donnez lui un nom, désignez un chef d'équipe et réglez les frais d'inscription (26€ par équipe). 
+		</p>
+		<form id="signup-form">
+			
+			<div class="team">
+				<input type="text" name="team-name" id="team-name" class="" placeholder="Nom de votre équipe" required>
+			</div>
+			
+			<div class="guys">
+				<input type="text" name="admin-name" id="admin-name" class="" placeholder="Prénom et nom du chef d'équipe" required><input type="mail" name="admin-mail" id="admin-mail" class="mailinput" placeholder="Son adresse e-mail" required>
+			</div>
+
+			<input type="button" value="Ajouter un co-équipier" class="button" onclick="ajouterCo(); return false;">
+			<input type="button" value="Valider l'inscription" class="button" onclick="signup(); return false;">
+
+		</form>
+		<div id="form-error"></div>
+
+		<p class="content-text">
+			Les frais d'inscription, modiques (26€ par équipe, quelque soit le nombre de participants), servent essentiellement à rembourser les coûts d'organisation et à acheter des lots pour récompenser toutes les équipes lors d'un grand diner de cloture en avril.
+		</p>
+
+	</section>
+
+	<section id="payment">
+
+		<h1>Frais d'inscription</h1>
+
+		<p class="content-text">
+			Merci !<br>
+			Votre équipe <span class="t-name"></span> est pré-inscrite.<br>
+			Pour confirmer votre inscription, il vous suffit de régler vos frais d'inscription.
+			Ceux-ci ne sont à régler qu'une seule fois par équipe et servent uniquement à couvrir les coûts d'organisation.
+		</p>
+
+		<input type="button" value="Payer par carte bancaire" id="payCB-1" class="button paybutton" onClick="displayPayment()">
+		<!--input type="button" value="Payer par chèque" id="payCheque" class="button chequebutton" onclick="push('cheque'); return false;"-->
+
+	</section>
+
+	<section id="loader">
+
+		<div class="lds-css ng-scope">
+			<div style="width:100%;height:100%" class="lds-pacman"><div><div></div><div></div><div></div></div><div><div></div><div></div></div></div>
+		</div>
+
+	</section>
+	
+	<section id="cheque">
+		
+		<h2>Juste une dernière étape...</h2>
+		<p class="content-text">
+			Pour finaliser l'inscription de l'équipe <span class="t-name"></span>, merci d'envoyer un chèque à l'ordre et à l'adresse de :<br>
+			<b>Association Jeux et Patrimoines<br>c/o RAFFY<br>15 rue des Feuillantines<br>75005 PARIS<br></b>
+			Votre inscription sera validée dès que nous le recevrons. Nous vous le confirmerons sur votre adresse mail <span class="a-mail"></span>.<br><br>
+
+			En attendant, nous vous donnons rendez-vous le 22 décembre pour le début du rallye !<br>
+			D'ici là, n'hésitez pas à nous contacter par mail sur <b><a href="mailto:rallye.hiver.2020@gmail.com">rallye.hiver.2020@gmail.com</a></b>.<br><br>
+
+			A très bientôt.
+		</p>
+
+		<input type="button" value="Payer plutôt par CB" id="payCB-2" class="button paybutton">
+
+	</section>
+
+	<section id="allgood">
+		<h2>Hourra !</h2>
+		<p class="content-text">
+			Votre équipe <span class="t-name"></span> est maintenant inscrite au Rallye d'Hiver 2023 ! Vous avez reçu un mail pour confirmer le règlement des frais d'inscription.<br><br>
+
+			Maintenant, rendez-vous pour le solstice d'hiver, 21 décembre à 22h47 pour le lancement. Bien sûr d'ici là, n'hésitez pas à nous contacter par mail sur <b><a href="mailto:rallyehiver2023@gmail.com">rallyehiver2023@gmail.com</a></b>.<br><br>
+			A très bientôt.
+		</p><br><br>
+		<img src="res/allgood.gif">
+	</section>
+
+	<section id="what">
+		<h1>Le Rallye d'Hiver</h1>
+		<h2>C'est quoi ?</h2>
+		<div class="content-text">
+			<p>Chaque année depuis plus de 50 ans, le Rallye d'Hiver propose à plusieurs centaines de participants de découvrir Paris autrement au travers d'énigmes et de jeux de piste.</p>
+
+			<p>En pratique, des équipes de 2 à 6 personnes ont les trois mois d’hiver pour résoudre des énigmes qui les conduisent sur des lieux pittoresques et/ou insolites. Là, les équipes doivent suivre un parcours qui guide leur découverte du lieu. C’est l’occasion d’occuper les longues soirées d’hiver et les jours brumeux en se creusant la tête avec ses amis, sa familles ... ou ses collègues !</p>
+
+			<p>Les frais d'inscription, modiques (26€ par équipe, quelque soit le nombre de participants), servent essentiellement à rembourser les coûts d'organisation et à acheter des lots pour récompenser toutes les équipes lors d'un grand diner de cloture en avril.</p>
+
+			<p>Vous avez plus de questions ? Contactez les organisateurs par mail sur <b>rallyehiver2023@gmail.com</b>. Sinon, rassemblez votre équipe et ...</p>
+			<input type="button" value="Inscrivez-vous !" class="button signupbutton" onclick="push('signup'); return false;">
+
+		</div>
+
+	</section>
+
+	<script>
+		
+		function signup() {
+
+			var error = "";
+			adminmail = document.getElementById("admin-mail").value;	// ! GLOBALS
+			adminname = document.getElementById("admin-name").value;	// ! GLOBALS
+			teamname  = document.getElementById("team-name").value; 	// ! GLOBALS
+
+			if 		(teamname == "") 	error = "Vous avez oublié le nom de l'équipe !";
+		    else if (adminname == "") error = "Vous avez oublié le nom du chef d'équipe !";
+		    else if (adminmail == "") error = "Vous avez oublié l'adresse mail du chef d'équipe";
+		    else if (!validateEmail(adminmail)) error = "Attention ce n'est pas une adresse email valide";
+
+			if (error == "") {
+
+				// display loading animation ...
+				push('loader');
+				
+				var httpRequest = new XMLHttpRequest();
+
+				// Coéquipiers
+				var els = document.getElementsByClassName("coeq-mail");
+				var coeq = '';
+				Array.prototype.forEach.call(els, function(el) { coeq += el.value!='' ? el.value+',':''; });
+
+				var data = {
+					"team": teamname, 
+					"leader": adminname, 
+					"leadermail": adminmail
+				};
+				if (coeq != '') data['membersmails'] = coeq;
+				
+				httpRequest.onreadystatechange = function() {
+				    if (httpRequest.readyState === 4) {
+				    	if (httpRequest.status === 201) {
+			                // display the team name in the other sections
+			                var els = document.getElementsByClassName("t-name");
+							Array.prototype.forEach.call(els, function(el) { el.innerHTML = teamname });
+							var els = document.getElementsByClassName("a-mail");
+							Array.prototype.forEach.call(els, function(el) { el.innerHTML = adminmail });
+
+			                push('payment');
+			            } else {
+			                document.getElementById("form-error").innerHTML = "Désolé, il y a eu un problème :(";
+			            }
+			        }
+				};
+				
+				httpRequest.open('POST', 'https://g1t0ssi5cb.execute-api.eu-west-3.amazonaws.com/prod/signup', true);
+				httpRequest.setRequestHeader('Content-Type', 'application/json');
+				httpRequest.send(JSON.stringify(data));
+
+			} else {
+				document.getElementById("form-error").innerHTML = error;
+			}
+		}
+
+		function validateEmail(txt) {
+		    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		    return re.test(String(txt).toLowerCase());
+		}
+
+		function ajouterCo () {
+			var newNode = document.createElement('div');
+			newNode.className = "guys";
+			newNode.innerHTML = '<input type="text" name="coeq-name" class="coeq-name" placeholder="Prénom et nom du coéquipier"><input type="mail" name="coeq-mail" class="coeq-mail mailinput" placeholder="Son adresse e-mail"><div id="addCo" onclick="ajouterCo();"></div>';
+			var nodes = document.querySelectorAll(".guys");
+			var lastNode = nodes[nodes.length- 1];
+
+			lastNode.parentNode.insertBefore(newNode, lastNode.nextSibling);
+
+		}
+
+	</script>
+
+	<script>
+		
+		function updatecountdown() {
+
+			var now = new Date().getTime();
+			var distance = countDownDate - now;
+
+			// If the count down is finished, redirect
+			if (distance <= 0) {
+				clearInterval(x);
+				document.getElementById("countdown").innerHTML = "C'est parti !";
+				window.location.href = "https://app.rallyehiver.fr";
+				return;
+			}else if(distance < 31000 && distance >= 30000) {
+				document.getElementsByClassName('content-text')[0].style.display = 'none';
+				document.getElementsByClassName('button')[0].style.display = 'none';
+				document.getElementsByClassName('button')[1].style.display = 'none';
+			}else if(distance < 21000 && distance >= 20000) {
+				document.body.style.background = 'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), #000 url("waldo.jpg") center/cover no-repeat fixed';
+			}else if(distance < 16000 && distance >= 15000) {
+				document.getElementById('intro').style.fontFamily = "'Indie Flower', sans-serif"
+			}else if(distance < 11000 && distance >= 10000) {
+				document.getElementsByClassName('message')[0].style.color = '#000';
+				document.getElementsByClassName('message')[0].style.background = '#fff';
+			}else if(distance < 6000 && distance >= 5000) {
+				document.body.style.background = '#000 url("waldo.jpg") center/cover no-repeat fixed';
+			}
+
+			// Time calculations for days, hours, minutes and seconds
+			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / (1000));
+
+			// Display the result in the element
+			var txt = '';
+			if (days) txt += days + " jour" + (days>1 ? "s, ":", ");
+			if (hours) txt += hours + " heure" + (hours>1 ? "s, ":", ");
+			if (minutes) txt += minutes + " minute" + (minutes>1 ? "s et ":" et ");
+			txt += seconds + " seconde" + (seconds>1 ? "s":"");
+
+			document.getElementById("countdown").innerHTML = txt;
+
+		}
+
+		/* Pour lancer le compte à rebours
+		var countDownDate = new Date("Dec 21, 2018 00:00:00").getTime();
+		updatecountdown();
+		var x = setInterval(function() {updatecountdown();}, 1000); */
+	</script>
+
+</body>
+</html>
