@@ -9,6 +9,7 @@ Sites et apps du Rallye d'Hiver parisien : https://rallyehiver.fr
 * admin : app pour les organisateurs, pour le suivi de l'avancement des équipes
 
 * rallyehome : sites communs pour toutes les éditions, permettant notamment les inscriptions et paiements
+
 TO DO: merge ces différents site en un pour permettre la gestion du rallye commune pour toutes les éditions
 
 ## Deux architectures et stacks différentes 
