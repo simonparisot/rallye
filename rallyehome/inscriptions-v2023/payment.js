@@ -1,7 +1,8 @@
 // Payment handling on the frontend for the Stripe backend.
 
-var stripe_account = "acct_1LGD1a2E4Pf8JclV";
-var stripe = Stripe('pk_test_51LGBvIFydABlduG3zSShZpIbNkIUyfJSsbFUEvzwjp7Gp4R4EyAs1w2cYb1vdxlGVbJ36WHjIBF1PhGtKFQWyPwW00KtaMO0be', {
+var stripe_account = "acct_1M5rgPCB48kjOJ4Q";
+var stripe = Stripe('pk_live_51LGBvIFydABlduG3Yx6axMVdv4LQ6DQljmkAxQeZPkZuJSVgMeTJoHc4C26BwpjO15ie3lcXDOzhJHwcLL7r7KfB00b7HtQ4y1', {
+// var stripe = Stripe('pk_test_51LGBvIFydABlduG3zSShZpIbNkIUyfJSsbFUEvzwjp7Gp4R4EyAs1w2cYb1vdxlGVbJ36WHjIBF1PhGtKFQWyPwW00KtaMO0be', {
   stripeAccount: stripe_account,
 });
 
@@ -10,7 +11,7 @@ function displayPayment() {
     push('loader');
     
     // create a Stripe Checkout session when clicking on "Offrir" button
-    var price_id = "price_1M0xmA2E4Pf8JclVgVrnreUY";
+    var price_id = "price_1M5uYECB48kjOJ4QoGkmeYSl";
     var body = { priceid: price_id, stripeaccount: stripe_account, successUrl: 'allgood',cancelUrl: 'payment'};
 
     // sending the payment request to our backend, then to Stripe

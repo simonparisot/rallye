@@ -9,6 +9,7 @@
   "author": "Simon",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "simplify-string": "^1.0.3"
   }
 }

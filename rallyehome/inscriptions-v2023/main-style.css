@@ -74,6 +74,8 @@ input {
 }
 
 input#team-name  { width: 100%; margin: 5px 0; }
+input#team-pwd  { width: calc(50% - 5px); margin: 5px 5px 5px 0; }
+input#team-pwd2 { width: calc(50% - 5px); margin: 5px 0 5px 5px; }
 input#admin-name { width: calc(50% - 5px); margin: 5px 5px 5px 0; }
 input#admin-mail { width: calc(50% - 5px); margin: 5px 0 5px 5px; }
 input.coeq-name  { width: calc(50% - 5px); margin: 5px 5px 5px 0; }
@@ -90,6 +92,8 @@ input.coeq-mail  { width: calc(50% - 5px); margin: 5px 0 5px 5px; }
   text-align: center;
 }
 
+.team { margin-bottom: 30px; }
+
 
 .signupbutton { margin-top: 40px; }
 .paybutton { margin-top: 20px; }
@@ -98,6 +102,7 @@ input.coeq-mail  { width: calc(50% - 5px); margin: 5px 0 5px 5px; }
 #payCB-2 { width: 30%; }
 
 #form-error {
+  display: none;
 	font-size: 1.8rem;
 	font-family: sans-serif;
 	font-style: normal;
@@ -105,12 +110,13 @@ input.coeq-mail  { width: calc(50% - 5px); margin: 5px 0 5px 5px; }
 	color: #000;
 	background-color: red;
 	margin-top: 7px;
-	padding: 0 10px;
+	padding: 7px 12px;
 	width: fit-content;
 	text-shadow: none;
+  border-radius: 5px;
 }
 
-.content-text {
+.content-text, label {
 	font-family: "Roboto", sans-serif;
 	font-weight: normal;
 	font-style: normal;

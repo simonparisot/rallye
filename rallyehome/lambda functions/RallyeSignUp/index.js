@@ -1,14 +1,14 @@
 'use strict';
 
-var AWS = require('aws-sdk'),
+const AWS = require('aws-sdk'),
 	ddb = new AWS.DynamoDB.DocumentClient(); 
 
-var simplifyString = require("simplify-string");
+const simplifyString = require("simplify-string");
 
 
 exports.handler = function(event, context, callback){
     
-    //console.log("DEBUG:" + "New request: " + JSON.stringify(event));
+    console.log("DEBUG:" + "New request: " + JSON.stringify(event));
     
     global.requestBody = JSON.parse(event.body);
     global.team = requestBody.team;
