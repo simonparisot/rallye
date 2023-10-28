@@ -5,7 +5,9 @@ $(document).ready(function() {
     $('.col-gauche', '.white').on('click', 'li:not(.deactivated)', function(e){ loadcontent(this) });
     $('.col-gauche', '.grey' ).on('click', 'li:not(.deactivated)', function(e){ loadcontent(this) });
     $('textarea').autogrow();
-    $('.mail-orga').on('click', function() { $(this).html('rallye.hiver.2020@gmail.com').addClass("revealed") })
+    $('.mail-orga').on('click', function() { $(this).html('rallyehiver2023@gmail.com ').addClass("revealed") })
+    $('#to-info1').on('click', function() { $('#info1').show(); $('#info2').hide() })
+    $('#to-info2').on('click', function() { $('#info1').hide(); $('#info2').show() })
     $('#popin').on('click', function() { $('#popin').toggle(); })
     $('.downloadButton').on('click', function() { window.location = 'controllers/download.php?code=' + activeCode(); })
     $('.clueButton').on('click', function() {     
@@ -75,25 +77,9 @@ function loadcontent (link) {
 
     var current = activeCode();
     current = current.substring(0, 3)
-    if( current=='E16' ){
         
-        $(link).parents('.curtain').find('.content-src').html('<iframe frameborder="0" width="480" height="270" src="https://www.dailymotion.com/embed/video/x7pdva2" allowfullscreen allow="autoplay"></iframe>');
-    
-    }else if( current=='E18' ){
-        
-        $(link).parents('.curtain').find('.content-src').html('<iframe frameborder="0" width="480" height="270" src="https://www.dailymotion.com/embed/video/x7poce4" allowfullscreen allow="autoplay"></iframe>');
-    
-    }else if( current=='E20' ){
-        
-        // E20 est une enigme de rapidité, je veux être certain qu'aucun cache ne vient gêner la mise en ligne
-        var url = 'content/'+code+'.pdf?t=' + Date.now();
-        $(link).parents('.curtain').find('.content-src').html('<embed src="'+url+'#view=FitH&toolbar=0&statusbar=0&navpanes=0" alt="pdf" type="application/pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">');
-    
-    }else{     
-        
-        var url = 'content/'+code+'.pdf';
-        $(link).parents('.curtain').find('.content-src').html('<embed src="'+url+'#view=FitH&toolbar=0&statusbar=0&navpanes=0" alt="pdf" type="application/pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">');
-    }
+    var url = 'content/'+code+'.pdf';
+    $(link).parents('.curtain').find('.content-src').html('<embed src="'+url+'#view=FitH&toolbar=0&statusbar=0&navpanes=0" alt="pdf" type="application/pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">');
 
     if(current=='PBO') $('.content-header form').hide();
     else $('.content-header form').show();
@@ -111,7 +97,9 @@ function tester (form) {
         $(form).children('.reponse').fadeOut(80).fadeIn(80).fadeOut(80).fadeIn(80);
     } else {
         var verify = $.get("controllers/verify.php", {code: activeCode(), pwd: pwd}, function(reponse){
-            reponse.ok ? color = 'LightGreen' : color = 'Red' 
+            if(reponse.ok == 'hum') color = 'Orange' 
+            else if (reponse.ok) color = 'LightGreen'
+            else color = 'Red';
             $(form).parents('.curtain').find('.content-solved').html(reponse.texte).css('background-color', color).slideDown();
             if (reponse.ok) {
                 $('.col-gauche', '.white').load('views/enigmes-list.php');

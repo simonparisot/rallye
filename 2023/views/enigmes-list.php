@@ -6,7 +6,7 @@ if (!isset($bdd)) {
 	require_once '../controllers/login.php';
 }
 
-echo '<ol id="enigmes-list">';
+echo '<ol id="enigmes-list" start="0">';
 
 foreach ($rallyeContent as $key => $value) {
 

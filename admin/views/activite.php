@@ -2,7 +2,7 @@
 
 <?
 
-require '../controllers/db.php';
+require_once '../controllers/initialize.php';
 
 // requête pour prendre uniquement la dernère connexion de chaque équipe
 $search = $bdd->prepare('SELECT t.equipe, t.date FROM rallye_log t INNER JOIN (SELECT equipe, max(date) AS MaxDate FROM rallye_log GROUP BY equipe) tm ON t.equipe = tm.equipe AND t.date = tm.MaxDate WHERE t.equipe != "orga" ORDER BY t.date DESC');

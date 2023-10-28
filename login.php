@@ -9,8 +9,6 @@ ini_set('session.gc_maxlifetime', 7200);
 session_start();
 $auth = false;
 
-
-
 // user wants to disconnect
 if( isset($_GET['disconnect']) ) {
 

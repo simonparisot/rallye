@@ -2,8 +2,7 @@
 <p>Cliquez pour afficher la discussion entière</p>
 
 <?php
-require_once '../controllers/db.php';
-require_once '../ressources/info.php';
+require_once '../controllers/initialize.php';
 
 // on récupère la liste de toutes les derniers messages, groupé par équipe et énigme 
 $search = $bdd->prepare('SELECT * FROM rallye_posts t1 INNER JOIN (SELECT equipe, enigme, max(date) as maxdate FROM rallye_posts GROUP BY equipe, enigme) t2 ON t1.equipe=t2.equipe AND t1.enigme=t2.enigme AND t1.date=t2.maxdate ORDER BY date DESC');

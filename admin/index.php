@@ -1,15 +1,11 @@
-<?php
-require_once 'controllers/db.php';
-require_once 'controllers/login.php';
-require_once 'ressources/info.php';
-?>
+<?php require_once 'controllers/initialize.php'; ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
 
-	<title>Admin | RH2020</title>
+	<title>Admin | Rallye d'Hiver</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, height=device-height,  initial-scale=1.0"/>
 

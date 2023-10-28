@@ -1,4 +1,5 @@
 <?php
+
 if (!isset($_GET['justdata'])) { // appel ajax juste pour les données ?
 
 	?>
@@ -18,8 +19,7 @@ if (!isset($_GET['justdata'])) { // appel ajax juste pour les données ?
 
 }
 
-require '../controllers/db.php';
-require '../ressources/info.php';
+require_once '../controllers/initialize.php';
 
 $filters = (isset($_GET['team']) && $_GET['team']!='') ? ' AND equipe LIKE "%'.$_GET['team'].'%"' : '';
 $filters .= (isset($_GET['enigme']) && $_GET['enigme']!='') ? ' AND enigme LIKE "%'.$_GET['enigme'].'%"' : '';

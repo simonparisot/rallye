@@ -1,12 +1,4 @@
-<?php
-require_once 'controllers/initialize.php';
-
-if (isset($_SESSION['admin']) && $_SESSION['admin']) {
-	header('Location: http://admin.rallyehiver.fr/');
-	exit();
-}
-
-?>
+<?php require_once 'controllers/initialize.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -35,7 +27,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin']) {
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	
 	<script src="ressources/jquery-1.11.2.min.js"></script>
-	<script src="controllers/client_controller.min.js?<?= filemtime('controllers/client_controller.min.js'); ?>"></script>
+	<script src="controllers/client_controller.js?<?= filemtime('controllers/client_controller.js'); ?>"></script>
 	
 	<script>
 		// Google Analytics tag

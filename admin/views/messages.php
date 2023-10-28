@@ -2,7 +2,8 @@
 
 <?
 
-require '../controllers/db.php';
+require_once '../controllers/initialize.php';
+
 $search = $bdd->prepare('SELECT equipe, msg, date FROM rallye_msg ORDER BY date DESC');
 
 if ($search->execute()) {

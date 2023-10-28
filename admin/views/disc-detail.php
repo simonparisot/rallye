@@ -2,8 +2,7 @@
 
 if( isset($_GET['enigme']) && isset($_GET['team']) ) {
 
-	require_once '../controllers/db.php';
-	require_once '../ressources/info.php';
+	require_once '../controllers/initialize.php';
 
 	$search = $bdd->prepare('SELECT date, nom, text FROM rallye_posts WHERE equipe = :equipe AND enigme = :enigme ORDER BY date DESC');
 

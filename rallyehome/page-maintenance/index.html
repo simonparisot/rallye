@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Maintenance</title>
+	<style type="text/css">
+		@import-normalize;
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto:wght@300;400&display=swap");
+
+/* trick pour obfusquer tant que possible l'email de contact */
+.e-mail:before {
+  content: "\0068\0065\006c\006c\006f\0040\0072\0061\006c\006c\0079\0065\0068\0069\0076\0065\0072\002e\0066\0072";
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+html { font-size: 62.5%; }
+
+body {
+	margin: 0;
+	padding: 0;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+		#000 url("tristan-colangelo-d4OnMIl5OYk-unsplash.jpg") center/cover no-repeat fixed;
+  font-family: 'Abril Fatface', sans-serif;
+	text-shadow: 1px 1px 7px #000;
+  font-size: 1rem;
+	width: 70%;
+	max-width: 700px;
+	margin: 10vh auto 60px auto;
+	text-align: left;
+}
+
+section {
+  margin-top: 3rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 2rem;
+  color: #fff;
+  line-height: 1.3;
+}
+
+nav { margin-top: 3rem; }
+
+h1, h2 { 
+  font-size: 5.2rem; 
+  font-weight: normal;
+  font-style: normal;
+  margin: 10px 0;
+}
+
+h1 { color: #ffffff; }
+h2 { color: #fff000; }
+
+a { 
+  text-decoration: none;
+  color: #fff;
+}
+
+button { 
+  border: none;
+  padding: 14px 18px;
+  margin-right: 20px;
+  min-width: 180px;
+  font-size: 1.8rem;
+  font-family: "Abril Fatface", cursive, sans-serif;
+  background-color: #fff000;
+  cursor: pointer;
+  border-radius: 5px;
+}
+button:hover { box-shadow: 0 0 5px #fff000; }
+button svg { margin-right: 10px; }
+
+.year-edition {
+  min-width: 275px;
+  display: inline-block;
+  margin: 20px 20px 0 0;
+  padding: 10px 20px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 10px #000;
+  background-color: #eee;
+  color: #000;
+  font-weight: 400;
+  text-shadow: none;
+}
+div.year-edition {
+  opacity: 0.6;
+}
+a.year-edition:hover { box-shadow: 0 0 5px #ccc; }
+
+.year-edition > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.year-edition img {
+  width: 100px;
+  border-radius: 100px;
+  margin-right: 20px;
+  border: 1px solid #000;
+}
+
+
+
+
+
+
+form { margin-top: 50px; }
+
+.message {
+    font-family: "Harmattan", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2rem;
+    color: #fff000;
+    margin: 0;
+    margin-top: 50px;
+    text-shadow: none;
+    background: rgba(255,255,255,0.3);
+    padding: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    line-height: 1.4;
+}
+
+.message span { font-weight: bold; font-size: 3rem; }
+
+input {
+	margin: 0 5px 5px 0;
+	padding: 0 10px;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 1px 1px 7px #333;
+	height: 4rem;
+	vertical-align: top;
+	-webkit-appearance: none;
+	-webkit-border-radius:0; 
+    border-radius:0;
+}
+
+.guys > * {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.guys > input { 
+	width: 41%;
+	font-size: 1.4rem;
+}
+
+input#team-name {
+	width: 60%;
+	font-size: 1.4rem;	
+}
+
+#payCB-2 { width: 30%; }
+
+#addCo {
+	display: inline-block;
+    cursor: pointer;
+}
+
+#addCo img { height: 3.5rem; }
+
+#form-error {
+	font-size: 1.4rem;
+	font-family: sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	color: #000;
+	background-color: red;
+	margin-top: 7px;
+	padding: 0 10px;
+	width: fit-content;
+	text-shadow: none;
+}
+
+#processing { text-align: center; margin-top: 35vh; }
+
+@media (orientation: portrait) {
+
+  body {
+    font-size: 1rem;
+    width: 85%;
+    margin: 3rem auto;
+    text-align: left;
+  }
+
+  h1 { font-size: 4.6rem; }
+  h2 { font-size: 4rem; }
+
+  button { 
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+  }
+
+}
+	</style>
+</head>
+<body>
+
+<div>
+	<h2>Ceci n'est pas une énigme 😅</h2>
+	
+	<section>
+		<p>Le site a besoin de quelques coups de tournevis pour revenir en ligne.</p>
+		<p>Ne désespérez pas ! Cela devrait être bon dès ce soir (jeudi).</p>
+	</section>
+</div>
+
+</body>
+</html>

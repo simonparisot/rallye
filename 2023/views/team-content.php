@@ -23,9 +23,9 @@ if ($visites+$enigmes == 0) {
 
 ?>
 
-<div class="docsutiles">
+<div class="inside-box">
 	<span>Quelques liens utiles</span>
-	<a href="content/RH2020 - Règles du jeu.pdf">
+	<a href="content/RH2023 - Règlement.pdf">
 		<div class="file">
 			<i class="fas fa-book"></i>
 			Les règles du jeu
@@ -39,7 +39,7 @@ if ($visites+$enigmes == 0) {
 	</a>
 </div>
 
-<div class="commentaires">
+<div class="inside-box commentaires">
 	<form>
 		<textarea class="textbox" placeholder="Un avis sur les énigmes résolues ? Des idées d'améliorations ?"></textarea>
 		<input type="submit" value="Écrire aux organisateurs" class="btn">

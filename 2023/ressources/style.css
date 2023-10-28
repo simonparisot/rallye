@@ -14,10 +14,13 @@ body {
 	text-rendering: optimizeLegibility;
 }
 #container { overflow: hidden; }
-#authform { width: 250px; margin: 0 auto; }
-#authform .field { margin-bottom: 20px; }
+#authform { width: 330px; margin: 0 auto; }
+#authform .field, #authform2 .field { margin-bottom: 20px; }
 #loginfailed { margin-bottom: 15px; color: red; }
 .fas, .far, .fab { font-size: 1.5rem; letter-spacing: 0.6rem; vertical-align: middle; }
+#authinfo { text-align:center; }
+#authinfo .inside-box { text-align:left; display: none; }
+
 
 /*curtain style */
 .curtain {
@@ -259,8 +262,8 @@ input, textarea, button {
 .communication li { margin-bottom: 10px; }
 .communication a { text-decoration: none; }
 .communication a:hover { color: #df5537; }
-.commentaires, .docsutiles { background-color: rgba(0, 0, 0, 0.05); border-radius: 4px; padding: 15px; margin-top: 30px; }
-.docsutiles span { display: block; font-weight: bold; margin-bottom: 15px; }
+.inside-box { background-color: rgba(0, 0, 0, 0.05); border-radius: 4px; padding: 15px; margin-top: 30px; }
+.inside-box span { display: block; font-weight: bold; margin-bottom: 15px; }
 .file { padding: 6px; }
 .file i { vertical-align: middle; margin: 0 10px; float: left; width: 2rem; }
 #countdown { font-size: 1.2em; font-weight: bold; }
@@ -274,7 +277,7 @@ input, textarea, button {
 .tuxedo { position: absolute; top: 500px; left: 300px; }
 
 /* popin */
-#popin { display: none; background: rgba(0,0,0,0.7); position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; }
+#popin { display: none; background: rgba(0,0,0,0.7); position: absolute; top: 0; left: 0; width: 100%; z-index: 1000; }
 #popin section { text-align: left; width: 50%; margin: 20vh auto; background-color: #ddd; color: #111; padding:50px; border-radius: 10px; box-shadow: 0 0 100px #000; }
 #popin section h2 { font-size: 1.5rem; }
 #popin section .fas { vertical-align: baseline; }

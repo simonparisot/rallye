@@ -2,15 +2,14 @@
 
 <?
 
-require '../controllers/db.php';
-require '../ressources/info.php';
+require_once '../controllers/initialize.php';
 
 // --------------------------------------
 // on récupère l'activité des équipes
 // en regardant leurs derniers logs
 // et on change l'opacité d'affichage en fonction
 
-$search1 = $bdd->prepare('SELECT t.equipe, t.date FROM rallye_log t INNER JOIN (SELECT equipe, max(date) AS MaxDate FROM rallye_log GROUP BY equipe) tm ON t.equipe = tm.equipe AND t.date = tm.MaxDate WHERE t.equipe != "orga" AND t.equipe != "simon" AND t.equipe != "meltingpotes" ORDER BY t.date DESC');
+$search1 = $bdd->prepare('SELECT t.equipe, t.date FROM rallye_log t INNER JOIN (SELECT equipe, max(date) AS MaxDate FROM rallye_log GROUP BY equipe) tm ON t.equipe = tm.equipe AND t.date = tm.MaxDate ORDER BY t.date DESC');
 
 if ($search1->execute()) {
 	while ($team = $search1->fetch()) {
@@ -26,13 +25,13 @@ if ($search1->execute()) {
 // qui est affiché sous forme de cases
 // et on trie les équipes
 
-$search2 = $bdd->prepare('SELECT * FROM rallye_people WHERE login != "orga" AND login != "simon" AND login != "meltingpotes" ORDER BY id');
+//$search2 = $bdd->prepare('SELECT * FROM rallye_people WHERE login != "orga" AND login != "simon" AND login != "meltingpotes" ORDER BY id');
+$search2 = $bdd->prepare('SELECT * FROM rallye_users WHERE type !="admin" ORDER BY name');
 $teamRank = array();
 $total_e_unlocked = 0;
 $total_p_unlocked = 0;
 $total_e_solved = 0;
 $total_p_solved = 0;
-
 
 if ($search2->execute()) {
 	while ($team = $search2->fetch()) {
@@ -43,7 +42,7 @@ if ($search2->execute()) {
 		$temp['p_solved'] = 0;
 		$temp['enigme'] = "";
 		$temp['quest'] = "";
-		$temp['name'] = $team['nom'];
+		$temp['name'] = $team['name'];
 
 		$unlocked = json_decode($team['unlocked'], true);
 

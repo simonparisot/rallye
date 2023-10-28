@@ -1,0 +1,15 @@
+{
+  "name": "rallye-stripe-payment-callback",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "parisot.simon@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1258.0",
+    "stripe": "^11.1.0"
+  }
+}

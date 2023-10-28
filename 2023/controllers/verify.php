@@ -31,7 +31,7 @@ if(isset($_GET['code']) && isset($_GET['pwd'])) {
         // ----------------------------------------------------------------------
         // on teste si le mot de passe est correct 
 
-        if ( (isset($rallyeContent[$code]) && (password_verify($pwd, $rallyeContent[$code][2]) || password_verify($pwd, '$2y$10$n0IZQvChToSp.VUU9YXcHOgW4gM62gyU2qGRbLWW75ZkGobCVcI42') ) ) ) {
+        if ( (isset($rallyeContent[$code]) && (password_verify($pwd, $rallyeContent[$code][2]) || password_verify($pwd, '$2y$10$p7s/ZjOTmfAFTMkoaw10c.lN9fmc42ZU0/g8KqCdKkAGsl3lWyRS.') ) ) ) {
 
             $unlocked = $_SESSION['unlocked'];
             // est-ce que c'est une énigme ou un parcours ?
@@ -51,77 +51,21 @@ if(isset($_GET['code']) && isset($_GET['pwd'])) {
                 // ----------------------------------------------------------------------
                 // Logique de déblocage du contenu
 
-                if ($code == 'P00wiG7d67n') {   // PARCOURS 0 (prologue)
-
-                    $unlocked["E21fh74gZx9"] = false;
-                    $texte = "Bien joué. J'espère que votre rencontre avec le Baron s'est bien déroulée ! Vous avez maintenant accès à l'énigme finale. Oh et j'oubliais, il me semble que cet indice pourrait vous être utile : ".$rallyeContent[$code][3].".";
-                    $d = array('ok' => true, 'texte' => $texte) ;
-
-                
-                }else if ($code == 'P11s2wzbJRN') {   // PARCOURS 11 (épilogue)
-
-                    $texte = "Félicitations pour votre efficacité ! La SSGV vous informe que le Baron Haussmann a réussi à retourner dans son temps.";
-                    $d = array('ok' => true, 'texte' => $texte) ;
-
-                
-                }else if($code == 'E21fh74gZx9'){    // ENIGME FINALE
+                if ($type=="parcours"){ // On a résolu un parcours
                     
-                    $unlocked["P11s2wzbJRN"] = false;
-                    $texte = "Impressionnant ... Vous avez parcouru avec succès les visites de ce rallye et avez résolu l'énigme finale. Serez-vous à la hauteur pour un tout dernier parcours ? Vous venez de le débloquer.";
+                    $texte = "Félicitations ! Vous avez résolu ce parcours !";
                     $d = array('ok' => true, 'texte' => $texte) ;
-
-
-                }else if ($type=="parcours"){ // On a résolu un parcours
-                    
-                    if ( !isset($unlocked['E11YcdRWwzc']) ) {
-                        $unlocked["E11YcdRWwzc"] = false;
-                        $unlocked["E12mSedBRcj"] = false;
-                        $texte = "Bravo ! Vous avez débloqué deux énigmes supplémentaires. Cet indice pourrait également vous être utile : ".$rallyeContent[$code][3];
-                    }else if ( !isset($unlocked['E13D8jf7Uts']) ) {
-                        $unlocked["E13D8jf7Uts"] = false;
-                        $unlocked["E14FqqZ8N6F"] = false;
-                        $texte = "Félicitations ! Vous avez débloqué deux énigmes supplémentaires. Vous pourriez également avoir besoin de cet indice : ".$rallyeContent[$code][3];
-                    }else if ( !isset($unlocked['E15fcGWBAwF']) ) {
-                        $unlocked["E15fcGWBAwF"] = false;
-                        $unlocked["E16Jcz74Jqh"] = false;
-                        $texte = "Bien joué ! Vous avez débloqué deux énigmes supplémentaires. Je serais vous, je noterais aussi cet indice : ".$rallyeContent[$code][3];
-                    }else if ( !isset($unlocked['E17ucgHNV8F']) ) {
-                        $unlocked["E17ucgHNV8F"] = false;
-                        $unlocked["E18NNjPUs3K"] = false;
-                        $texte = "Bravo ! Vous avez débloqué deux énigmes supplémentaires. Cet indice pourrait également vous être utile : ".$rallyeContent[$code][3];
-                    }else if ( !isset($unlocked['E19EKsmu647']) ) {
-                        $unlocked["E19EKsmu647"] = false;
-                        $unlocked["E20RZcq4LqZ"] = false;
-                        $texte = "Bien joué ! Vous avez débloqué les énigmes 19 et 20. Vous devriez également noter cette indice : ".$rallyeContent[$code][3];
-                    }else{
-                        $texte = "Bravo ! Vous ne débloquez pas de nouvelle énigme, mais cet indice pourrait vous être utile : ".$rallyeContent[$code][3];
-                    }
-
-                    $d = array('ok' => true, 'texte' => $texte) ;
-
 
                 }else if ($type=="énigme"){ // On a résolu une énigme
 
-                    // on débloque le prochain parcours, sauf si il n'y en a plus de dispo
-                    if ( isset($unlocked["P10xtdwXzHF"]) ) {
-                        $texte = "Bravo ! Vous ne débloquez pas de nouveau parcours mais vous gagnez des points ;)";
-                        $d = array('ok' => true, 'texte' => $texte) ;
-                    }else{
-                        foreach ($rallyeContent as $key => $value) {
-                            if ( $key[0]=="P" && !isset($unlocked[$key]) ) {
-                                $unlocked[$key] = false;
-                                $texte = "Bravo ! Vous débloquez un nouveau parcours : ".$value[0];
-                                $d = array('ok' => true, 'texte' => $texte) ;
-                                break;
-                            }
-                        }
-                    }
+                    $texte = "Félicitations ! Vous avez résolu cette énigme !";
+                    $d = array('ok' => true, 'texte' => $texte) ;
 
                 }
 
                 // mise à jour de l'utilisateur en BDD
-                $update = $bdd->prepare('UPDATE rallye_people SET unlocked = :u WHERE login = :login');
-                $update->execute(array(':u' => json_encode($unlocked), ':login' => $_SESSION['login']));
+                $update = $bdd->prepare('UPDATE rallye_users SET unlocked = :u WHERE email = :email');
+                $update->execute(array(':u' => json_encode($unlocked), ':email' => $_SESSION['email']));
             }
                 
 
@@ -129,7 +73,7 @@ if(isset($_GET['code']) && isset($_GET['pwd'])) {
         // si le mot de passe est mauvais mais qu'il existe un message spécial
     	}elseif( isset($mauvais_mdp[$pwd]) && ($mauvais_mdp[$pwd][0] == $code || !$mauvais_mdp[$pwd][0]) ) {
         	$texte = $mauvais_mdp[$pwd][1];
-            $d = array('ok' => false, 'texte' => $texte);
+            $d = array('ok' => 'hum', 'texte' => $texte);
 
          // ----------------------------------------------------------------------
     	// si le mot de passe est mauvais

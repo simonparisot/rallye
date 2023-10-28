@@ -1,8 +1,6 @@
 <? if(isset($loginfailed)) echo "<div id=\"loginfailed\">$loginfailed</div>"; ?>
 
-<input name="login" size="25" type="text" class="textbox font2" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Identifiant" /><br><br>
-
-<input name="pwd" size="25" type="password" class="textbox font2" placeholder="Mot de passe" /><br><br>
+<input required minlength="10" name="code" size="30" type="text" class="textbox font2" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Code de connexion" /><br><br>
 
 <input type="hidden" name="persistent" id="persistent" value="true">
 

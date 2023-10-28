@@ -9,6 +9,7 @@ export const Editions = () => (
 		
 		<section>
 			
+			<YearEdition year="2023" theme="L'école" url="https://2023.rallyehiver.fr" />
 			<YearEdition year="2022" theme="Jardins et oiseaux" url="https://rallyehiver2022.fr/?code=spzowsqj" />
 			<YearEdition year="2021" theme="Les méchants" url="" />
 			<YearEdition year="2020" theme="Le temps" url="https://2020.rallyehiver.fr" />
